@@ -3,3 +3,7 @@
 h1{
 	font-family: 'Oregano', cursive;
 }
+
+.container-fluid{
+	margin-top: 75px;
+}
