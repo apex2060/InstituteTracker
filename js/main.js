@@ -1,7 +1,7 @@
 window.fbAsyncInit = function() {
   FB.init({
     appId      : '334689733318603', // FIXME
-    channelUrl : 'http://dev.institute_tracker.apex2060gmailcom.stackmobapp.com/index.html', // Channel File
+    channelUrl : '/index.html', // Channel File
     status     : true, // check login status
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML
