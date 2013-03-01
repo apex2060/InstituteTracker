@@ -70,7 +70,34 @@ function setLocation(position){
 
 
 $('#loginForm').submit(function(e){
-	it.login=$(this).serialize();
+	it.login=$(this).serializeObject();
 	login(it.login);
 	return false;
 });
+
+
+
+
+
+
+
+
+
+
+/**************************************** JQUERY FUNCTIONS ****************************************/
+$.fn.serializeObject = function()
+{
+   var o = {};
+   var a = this.serializeArray();
+   $.each(a, function() {
+       if (o[this.name]) {
+           if (!o[this.name].push) {
+               o[this.name] = [o[this.name]];
+           }
+           o[this.name].push(this.value || '');
+       } else {
+           o[this.name] = this.value || '';
+       }
+   });
+   return o;
+};
