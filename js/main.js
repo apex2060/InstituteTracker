@@ -41,6 +41,7 @@ function login(userInfo) {
 		user.create({
 		    success: function(model) {
 		        console.debug('User object is saved, username: ' + model.get('username'));
+		        it.valid=model;
 				angular.element(document.getElementById('all')).scope().$apply(function(scope){
 		        	scope.it = it;
 		    	});
