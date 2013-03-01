@@ -69,7 +69,9 @@ function setLocation(position){
 
 
 
-$('#loginForm').submit(function(){
+$('#loginForm').submit(function(e){
+	console.log(e);
+	console.log(this);
 	console.log('form submitted');
 	it.login=$(this).serialize();
 	console.log(it.login);
