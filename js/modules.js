@@ -1,7 +1,11 @@
 angular.module('institute', []).
 	config(['$routeProvider', function($routeProvider) {
 		$routeProvider.
-		when('/home', {templateUrl: 'partials/main.html',   controller: actCtrl}).
+		when('/home', {templateUrl: 'partials/site/main.html',   controller: actCtrl}).
+
+		
+		otherwise({redirectTo: '/home'});
+}]);
 
 /*		when('/list:sni', {templateUrl: 'partials/list.html',   controller: listCtrl}).
 		when('/map:sni', {templateUrl: 'partials/map.html',   controller: mapCtrl}).
@@ -17,5 +21,3 @@ angular.module('institute', []).
 		when('/account/login', {templateUrl: 'partials/account/login.html',   controller: actCtrl}).
 		when('/account/logout', {templateUrl: 'partials/account/logout.html',   controller: actCtrl}).
 		when('/account/delete', {templateUrl: 'partials/account/delete.html',   controller: actCtrl}).*/
-		otherwise({redirectTo: '/home'});
-}]);
