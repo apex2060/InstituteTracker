@@ -45,6 +45,7 @@ function login(userInfo) {
 				angular.element(document.getElementById('all')).scope().$apply(function(scope){
 		        	scope.it = it;
 		    	});
+		    	$('#loginModal').modal('hide');
 		    },
 		    error: function(model, response) {
 		        console.debug(response);
