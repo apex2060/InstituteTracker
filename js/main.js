@@ -1,22 +1,4 @@
-window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '334689733318603', // FIXME
-    channelUrl : '/index.html', // Channel File
-    status     : true, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
-  });
- 
-  // Additional initialization code here
-};
- (function(d){
-   var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-   js = d.createElement('script'); js.id = id; js.async = true;
-   js.src = '//connect.facebook.net/en_US/all.js';
-   d.getElementsByTagName('head')[0].appendChild(js);
- }(document));
-
-
+var it={};
 
 function saveGeoLoc(){
 	// If your schema name is different than `place`, then you need to replace `place` with your schema
@@ -46,30 +28,17 @@ function saveGeoLoc(){
 
 
 
-
-
 function login() {
-	//Login with Facebook
-	FB.login(function(response) {
-		if (response.authResponse) {
-			var accessToken = response.authResponse.accessToken;
-
-			FB.api('/me', function(response) {
-				var user = new StackMob.User({ username: response.email });
-				user.createUserWithFacebook(accessToken, {
-					success: function(model) {
-						console.debug(model);
-					},
-					error: function(model, response) {
-						console.debug(model);
-						console.debug(response);
-					}
-				});
-			});
-		} else {
-			console.log('User canceled login or did not fully authorize.');
-		}
-	}, {scope: 'email'});
+	var user = new StackMob.User({ username: 'Ryan Quinlan', password: 'somecoolencryption', profession: 'developer'});
+	user.create({
+	    success: function(model) {
+	        console.debug('User object is saved, username: ' + model.get('username'));
+	        it=model;
+	    },
+	    error: function(model, response) {
+	        console.debug(response);
+	    }
+	});
 }
 
 $('#login').click(function() {
