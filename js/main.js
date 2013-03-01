@@ -14,51 +14,42 @@ StackMob.init({
 
 /**************************************** MAIN FUNCTIONS ****************************************/
 function signup(userInfo) {
-	if(it.currentLocation==undefined){
-		alert('Geo Location must be activated to sign up.');
-		promptLocation();
-	}else{
-		var latlon = new StackMob.GeoPoint(position.coords.latitude, position.coords.longitude);
-		var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
-		user.create({
-		    success: function(model) {
-		        console.debug('User object is saved, username: ' + model.get('username'));
-		        it.valid=model;
-		    },
-		    error: function(model, response) {
-		        console.debug(response);
-		    }
-		});
-	}
+	promptLocation();
+	var latlon = new StackMob.GeoPoint(position.coords.latitude, position.coords.longitude);
+	var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
+	user.create({
+	    success: function(model) {
+	        console.debug('User object is saved, username: ' + model.get('username'));
+	        it.valid=model;
+	    },
+	    error: function(model, response) {
+	        console.debug(response);
+	    }
+	});
 }
 function login(userInfo) {
-	if(it.currentLocation==undefined){
-		alert('Geo Location must be activated to use this.');
-		promptLocation();
-	}else{
-		var latlon = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
-		var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
-		user.create({
-		    success: function(model) {
-		        console.debug('User object is saved, username: ' + model.get('username'));
-		        it.valid=model;
-				angular.element(document.getElementById('all')).scope().$apply(function(scope){
-		        	scope.it = it;
-		    	});
-		    	$('#loginModal').modal('hide');
-		    },
-		    error: function(model, response) {
-		        console.debug(response);
-		    }
-		});
-	}
+	promptLocation();
+	var latlon = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
+	var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
+	user.create({
+	    success: function(model) {
+	        console.debug('User object is saved, username: ' + model.get('username'));
+	        it.valid=model;
+			angular.element(document.getElementById('all')).scope().$apply(function(scope){
+	        	scope.it = it;
+	    	});
+	    	$('#loginModal').modal('hide');
+	    },
+	    error: function(model, response) {
+	        console.debug(response);
+	    }
+	});
 }
 
 function promptLocation(){
 	if (navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(setLocation);
-	}
-	else{
+	}else{
 		it.error.push("Geolocation is not supported by this browser.");
 	}
 }
