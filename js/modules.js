@@ -3,7 +3,7 @@ angular.module('institute', []).
 		$routeProvider.
 		when('/home', {templateUrl: 'partials/main.html',   controller: actCtrl}).
 
-		when('/list:sni', {templateUrl: 'partials/list.html',   controller: listCtrl}).
+/*		when('/list:sni', {templateUrl: 'partials/list.html',   controller: listCtrl}).
 		when('/map:sni', {templateUrl: 'partials/map.html',   controller: mapCtrl}).
 		when('/report:sni', {templateUrl: 'partials/report.html',   controller: reportCtrl}).
 		when('/message:sni', {templateUrl: 'partials/message.html',   controller: messageCtrl}).
@@ -16,6 +16,6 @@ angular.module('institute', []).
 		when('/account/create', {templateUrl: 'partials/account/create.html',   controller: actCtrl}).
 		when('/account/login', {templateUrl: 'partials/account/login.html',   controller: actCtrl}).
 		when('/account/logout', {templateUrl: 'partials/account/logout.html',   controller: actCtrl}).
-		when('/account/delete', {templateUrl: 'partials/account/delete.html',   controller: actCtrl}).
+		when('/account/delete', {templateUrl: 'partials/account/delete.html',   controller: actCtrl}).*/
 		otherwise({redirectTo: '/home'});
 }]);
