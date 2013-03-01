@@ -1,13 +1,14 @@
 var it={};
 	it.error=[];
 
-function login() {
+
+function login(userInfo) {
 	if(it.currentLocation==undefined){
 		alert('Geo Location must be activated to use this.');
 		promptLocation();
 	}else{
 		var latlon = new StackMob.GeoPoint(position.coords.latitude, position.coords.longitude);
-		var user = new StackMob.User({ username: 'Ryan Quinlan', password: 'somecoolencryption', profession: 'developer', geoloc: latlon});
+		var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
 		user.create({
 		    success: function(model) {
 		        console.debug('User object is saved, username: ' + model.get('username'));
@@ -35,13 +36,8 @@ function setLocation(position){
 
 
 
-
-
-
-
-
-
-
-$('#login').click(function() {
-	login();
+$('loginForm').submit(function(){
+	it.login=$(this).serialize();
+	login(it.login);
+	return false;
 });
