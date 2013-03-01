@@ -11,7 +11,6 @@ StackMob.init({
 });
 
 
-
 /**************************************** MAIN FUNCTIONS ****************************************/
 function signup(userInfo) {
 	promptLocation();
