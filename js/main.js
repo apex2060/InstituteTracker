@@ -2,6 +2,9 @@
 var it={};
 	it.error=[];
 
+
+
+
 /**************************************** INIT STACKMOB ****************************************/
 StackMob.init({
 	appName: "institute_tracker",
@@ -11,9 +14,21 @@ StackMob.init({
 });
 
 
+
+
+/**************************************** STARTUP CALLS ****************************************/
+promptLocation();
+
+
+
+
 /**************************************** MAIN FUNCTIONS ****************************************/
-function signup(userInfo) {
-	promptLocation();
+function updateModal(){
+	angular.element(document.getElementById('all')).scope().$apply(function(scope){
+		scope.it = it;
+	});
+}
+function signup(userInfo){
 	var latlon = new StackMob.GeoPoint(position.coords.latitude, position.coords.longitude);
 	var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
 	user.create({
@@ -27,16 +42,13 @@ function signup(userInfo) {
 	});
 }
 function login(userInfo) {
-	promptLocation();
 	var latlon = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
 	var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
 	user.create({
 	    success: function(model) {
 	        console.debug('User object is saved, username: ' + model.get('username'));
 	        it.valid=model;
-			angular.element(document.getElementById('all')).scope().$apply(function(scope){
-	        	scope.it = it;
-	    	});
+			updateModal();
 	    	$('#loginModal').modal('hide');
 	    },
 	    error: function(model, response) {
@@ -54,20 +66,18 @@ function promptLocation(){
 }
 function setLocation(position){
 	it.currentLocation=position;
+	updateModal();
 }
 
 
 
 
+/**************************************** JQUERY LISTENERS ****************************************/
 $('#loginForm').submit(function(e){
 	it.login=$(this).serializeObject();
 	login(it.login);
 	return false;
 });
-
-
-
-
 
 
 
