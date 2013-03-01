@@ -36,7 +36,7 @@ function setLocation(position){
 
 
 
-$('loginForm').submit(function(){
+$('#loginForm').submit(function(){
 	it.login=$(this).serialize();
 	login(it.login);
 	return false;
