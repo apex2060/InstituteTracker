@@ -41,7 +41,7 @@
 
 	<div id="main" class="container-fluid">
 		<div class="row-fluid">
-			<div class="span3">
+			<div class="span2">
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list" ng-show="it.isValid" ng-cloak>
 						<li class="nav-header">Seminary</li>
@@ -69,7 +69,7 @@
 					</ul>
 				</div><!--/.well -->
 			</div><!--/span-->
-			<div class="span9" ng-view>
+			<div class="span10" ng-view>
 			</div><!--/span-->
 		</div><!--/row-->
 
@@ -117,30 +117,5 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/modules.js"></script>
 	<script src="js/controllers.js"></script>
-	<script src="js/magicsuggest_class.js"></script>
-	<script src="js/magicsuggest.js"></script>
-	<script>
-		var area = StackMob.Model.extend({ schemaName: 'area' });
-		var areas = StackMob.Collection.extend({ model: area });
-		var allAreas = new areas();
-		allAreas.fetch({
-		success: function(areas) {
-			console.log(areas.toJSON());
-			}
-		});
-
-			var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
-	user.create({
-	    success: function(model) {
-	        console.debug('User object is saved, username: ' + model.get('username'));
-	        it.valid=model;
-			updateModal();
-	    	$('#loginModal').modal('hide');
-	    },
-	    error: function(model, response) {
-	        console.debug(response);
-	    }
-	});
-	</script>
 </body>
 </html>
