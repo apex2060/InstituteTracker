@@ -110,13 +110,27 @@
 	<script src="js/magicsuggest_class.js"></script>
 	<script src="js/magicsuggest.js"></script>
 	<script>
-			var area = StackMob.Model.extend({ schemaName: 'area' });
+		var area = StackMob.Model.extend({ schemaName: 'area' });
 		var areas = StackMob.Collection.extend({ model: area });
-		areas.fetch({
+		var allAreas = new areas();
+		allAreas.fetch({
 		success: function(areas) {
-			console.log(collection.toJSON());
+			console.log(areas.toJSON());
 			}
 		});
+
+			var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
+	user.create({
+	    success: function(model) {
+	        console.debug('User object is saved, username: ' + model.get('username'));
+	        it.valid=model;
+			updateModal();
+	    	$('#loginModal').modal('hide');
+	    },
+	    error: function(model, response) {
+	        console.debug(response);
+	    }
+	});
 	</script>
 </body>
 </html>
