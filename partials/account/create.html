@@ -1,4 +1,4 @@
-<div id="signup">
+<div id="signup" ng-controller="actCtrl">
 	<form id="signupForm" class="form-horizontal">
 		<h3>Signup</h3>
 		<hr>
@@ -100,15 +100,4 @@
 		<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 		<button type="submit" class="btn btn-primary">Signup</button>
 	</form>
-	<script src="/js/magicsuggest_class.js"></script>
-	<script src="/js/magicsuggest.js"></script>
-	<script src="/css/magicsuggest.css"></script>
-	<script>
-		new MagicSuggest({
-		    renderTo: $('#org_area'),
-		    width: 250,
-		    selectionPosition: 'right',
-		    data: 'Arizona,New Mexico,California,Utah,Idaho,Washington,North America,South America,Europe,Asia,Africa,Australia'
-		});
-	</script>
 </div>
