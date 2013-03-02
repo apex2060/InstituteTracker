@@ -101,11 +101,26 @@
 		<button type="submit" class="btn btn-primary">Signup</button>
 	</form>
 	<script>
-		new MagicSuggest({
-		    renderTo: $('#org_area'),
-		    width: 250,
-		    selectionPosition: 'right',
-		    data: 'Arizona,New Mexico,California,Utah,Idaho,Washington,North America,South America,Europe,Asia,Africa,Australia'
+		var area = StackMob.Model.extend({ schemaName: 'area' });
+		var areas = StackMob.Collection.extend({ model: area });
+		var allAreas = new areas();
+		allAreas.fetch({
+			success: function(areas) {
+			console.log(areas.toJSON());
+				var list = jQuery.map(areas, function (a) {
+					var t={};
+					t.id=a.area_id;
+					t.name=a.name;
+					return t;
+				});
+				new MagicSuggest({
+				    renderTo: $('#org_area'),
+				    width: 250,
+				    selectionPosition: 'right',
+				    data: list
+				});
+			}
 		});
+		
 	</script>
 </div>
