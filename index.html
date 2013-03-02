@@ -43,7 +43,7 @@
 		<div class="row-fluid">
 			<div class="span3">
 				<div class="well sidebar-nav">
-					<ul class="nav nav-list" ng-show="{{it.isValid}}">
+					<ul class="nav nav-list" ng-show="it.isValid" ng-cloak>
 						<li class="nav-header">Seminary</li>
 						<li class="active"><a href="#"> <i class="icon-user"></i> My Students</a></li>
 						<li><a href="#"> <i class="icon-globe"></i> Show On Map</a></li>
@@ -61,7 +61,7 @@
 						<li><a href="#"> <i class="icon-question-sign"></i> Get Help</a></li>
 						<li><a href="#"> <i class="icon-envelope"></i> Leave Feedback</a></li>
 					</ul>
-					<ul class="nav nav-list" ng-show="{{!it.isValid}}">
+					<ul class="nav nav-list" ng-show="!it.isValid">
 						<li class="nav-header">Get Started</li>
 						<li><a href="#"> <i class="icon-info-sign"></i> Learn More</a></li>
 						<li><a href="#"> <i class="icon-question-sign"></i> Get Help</a></li>
