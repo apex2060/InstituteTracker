@@ -101,6 +101,13 @@
 		<button type="submit" class="btn btn-primary">Signup</button>
 	</form>
 	<script>
+		var area = StackMob.Model.extend({ schemaName: 'area' });
+		var areas = StackMob.Collection.extend({ model: area });
+		areas.fetch({
+		success: function(areas) {
+			console.log(collection.toJSON());
+			}
+		});
 		new MagicSuggest({
 		    renderTo: $('#org_area'),
 		    width: 250,
