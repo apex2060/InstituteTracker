@@ -1,16 +1,34 @@
 <div id="signup">
 	<form id="signupForm" class="form-horizontal">
 		<h3>Signup</h3>
+		<hr>
+		<h4>Personal Information</h4>
 		<div class="control-group">
 			<label class="control-label" for="first_name">First Name</label>
 			<div class="controls">
 				<input type="text" id="first_name" name="first_name" placeholder="First Name">
 			</div>
+		</div>
+		<div class="control-group">
 			<label class="control-label" for="last_name">Last Name</label>
 			<div class="controls">
 				<input type="text" id="last_name" name="last_name" placeholder="Last Name">
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label" for="email">Email</label>
+			<div class="controls">
+				<input type="email" id="email" name="email" placeholder="Email">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="phone">Phone Number</label>
+			<div class="controls">
+				<input type="text" id="phone" name="phone" placeholder="555-555-5555">
+			</div>
+		</div>
+		<hr>
+		<h4>Account Information</h4>
 		<div class="control-group">
 			<label class="control-label" for="username">Username</label>
 			<div class="controls">
@@ -23,7 +41,72 @@
 				<input type="password" id="password" name="password" placeholder="Password">
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label" for="password2">Re-Enter Password</label>
+			<div class="controls">
+				<input type="password" id="password2" name="password2" placeholder="Password">
+			</div>
+		</div>
+		<hr>
+		<h4>Organization Information</h4>
+		<!--Program Name, Program Type, Parent Program, Location(GPS & Address), Contact Information, Website-->
+		<div class="control-group">
+			<label class="control-label" for="org_name">Program Name</label>
+			<div class="controls">
+				<input type="text" id="org_name" name="org_name" placeholder="Program Name">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="org_type">Program Type</label>
+			<div class="controls">
+				<label class="radio inline">
+					<input type="radio" id="org_type" value="Seminary"> Seminary
+				</label>
+				<label class="radio inline">
+					<input type="radio" id="org_type" value="Institute"> Institute
+				</label>
+				<span class="help-block">Each account can only be linked to one organization.</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="org_director">Director Name</label>
+			<div class="controls">
+				<input type="text" id="org_director" name="org_director" placeholder="Director Name">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="org_address">Address</label>
+			<div class="controls">
+				<input type="text" id="org_address" name="org_address" placeholder="Address">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="phone">Phone Number</label>
+			<div class="controls">
+				<input type="text" id="phone" name="phone" placeholder="555-555-5555">
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="org_area">Area</label>
+			<div class="controls">
+				<input type="text" id="org_area" name="org_area" placeholder="Last Name">
+				<span class="help-inline">This may be your state.</span>
+			</div>
+		</div>
+
 		<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 		<button type="submit" class="btn btn-primary">Signup</button>
 	</form>
+	<script src="/js/magicsuggest_class.js"></script>
+	<script src="/js/magicsuggest.js"></script>
+	<script src="/css/magicsuggest.css"></script>
+	<script>
+		new MagicSuggest({
+		    renderTo: $('#org_area'),
+		    width: 250,
+		    selectionPosition: 'right',
+		    data: 'Arizona,New Mexico,California,Utah,Idaho,Washington,North America,South America,Europe,Asia,Africa,Australia'
+		});
+	</script>
 </div>
