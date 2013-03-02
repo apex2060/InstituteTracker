@@ -35,6 +35,7 @@ function signup(userInfo){
 	    success: function(model) {
 	        console.debug('User object is saved, username: ' + model.get('username'));
 	        it.valid=model;
+	        it.valid.is=true;
 	    },
 	    error: function(model, response) {
 	        console.debug(response);
@@ -48,6 +49,7 @@ function login(userInfo) {
 	    success: function(model) {
 	        console.debug('User object is saved, username: ' + model.get('username'));
 	        it.valid=model;
+	        it.valid.is=true;
 			updateModal();
 	    	$('#loginModal').modal('hide');
 	    },
