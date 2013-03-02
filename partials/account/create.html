@@ -107,21 +107,19 @@
 		allAreas.fetch({
 			success: function(areas) {
 			console.log(areas.toJSON());
-				var list = jQuery.map(areas, function (a) {
+				var list = jQuery.map(areas.toJSON(), function (a) {
 					var t={};
 					t.id=a.area_id;
 					t.name=a.name;
 					return t;
 				});
 				console.log(list);
-				/*
 				new MagicSuggest({
 				    renderTo: $('#org_area'),
 				    width: 250,
 				    selectionPosition: 'right',
 				    data: list
 				});
-*/
 			}
 		});
 		
