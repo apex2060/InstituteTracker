@@ -1,6 +1,7 @@
 /**************************************** MAIN VARIABLE ****************************************/
 var it={};
 	it.error=[];
+	it.isValid=false;
 
 
 
@@ -35,7 +36,7 @@ function signup(userInfo){
 	    success: function(model) {
 	        console.debug('User object is saved, username: ' + model.get('username'));
 	        it.valid=model;
-	        it.valid.is=true;
+	        it.isValid=true;
 	    },
 	    error: function(model, response) {
 	        console.debug(response);
@@ -49,7 +50,7 @@ function login(userInfo) {
 	    success: function(model) {
 	        console.debug('User object is saved, username: ' + model.get('username'));
 	        it.valid=model;
-	        it.valid.is=true;
+	        it.isValid=true;
 			updateModal();
 	    	$('#loginModal').modal('hide');
 	    },
