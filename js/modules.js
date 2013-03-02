@@ -1,8 +1,8 @@
 angular.module('institute', []).
 	config(['$routeProvider', function($routeProvider) {
 		$routeProvider.
-		when('/home', {templateUrl: 'partials/site/main.html',   controller: actCtrl}).
-		when('/account/create', {templateUrl: 'partials/account/create.html',   controller: actCtrl}).
+		when('/home', {templateUrl: 'partials/site/main.html'}).
+		when('/account/create', {templateUrl: 'partials/account/create.html'}).
 
 		otherwise({redirectTo: '/home'});
 }]);
