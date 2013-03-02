@@ -109,5 +109,14 @@
 	<script src="js/controllers.js"></script>
 	<script src="js/magicsuggest_class.js"></script>
 	<script src="js/magicsuggest.js"></script>
+	<script>
+			var area = StackMob.Model.extend({ schemaName: 'area' });
+		var areas = StackMob.Collection.extend({ model: area });
+		areas.fetch({
+		success: function(areas) {
+			console.log(collection.toJSON());
+			}
+		});
+	</script>
 </body>
 </html>
