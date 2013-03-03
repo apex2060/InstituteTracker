@@ -1,0 +1,81 @@
+<div id="signup">
+	<form id="createOrg" class="form-horizontal">
+		<h3>Create Organization</h3>
+		<hr>
+		<h4>Organization Information</h4>
+		<!--Program Name, Program Type, Parent Program, Location(GPS & Address), Contact Information, Website-->
+		<div class="control-group">
+			<label class="control-label" for="org_name">Program Name</label>
+			<div class="controls">
+				<input type="text" id="org_name" name="org_name" placeholder="Program Name">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="org_type">Program Type</label>
+			<div class="controls">
+				<label class="radio inline">
+					<input type="radio" id="org_type" name="org_type" value="Seminary"> Seminary
+				</label>
+				<label class="radio inline">
+					<input type="radio" id="org_type" name="org_type" value="Institute"> Institute
+				</label>
+				<span class="help-block">Each account can only be linked to one organization.</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="org_director">Director Name</label>
+			<div class="controls">
+				<input type="text" id="org_director" name="org_director" placeholder="Director Name">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="org_address">Address</label>
+			<div class="controls">
+				<input type="text" id="org_address" name="org_address" placeholder="Address">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="phone">Phone Number</label>
+			<div class="controls">
+				<input type="text" id="phone" name="phone" placeholder="555-555-5555">
+			</div>
+		</div>
+
+		<p align="center"><img src="http://maps.googleapis.com/maps/api/staticmap?center={{it.currentLocation.coords.latitude}},{{it.currentLocation.coords.longitude}}&zoom=17&size=400x250&sensor=false"></img></p>
+
+		<div class="control-group">
+			<label class="control-label" for="org_area">Area</label>
+			<div class="controls">
+				<input type="text" id="org_area" name="org_area" placeholder="Last Name">
+				<span class="help-inline">This may be your state.</span>
+			</div>
+		</div>
+
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		<button type="submit" class="btn btn-primary">Signup</button>
+	</form>
+	<script src="js/magicsuggest_class.js"></script>
+	<script src="js/magicsuggest.js"></script>
+	<script>
+		var area = StackMob.Model.extend({ schemaName: 'area' });
+		var areas = StackMob.Collection.extend({ model: area });
+		var allAreas = new areas();
+		allAreas.fetch({
+			success: function(areas) {
+				var list = jQuery.map(areas.toJSON(), function (a) {
+					var t={};
+					t.id=a.area_id;
+					t.name=a.name;
+					return t;
+				});
+				new MagicSuggest({
+				    renderTo: $('#org_area'),
+				    width: 250,
+				    selectionPosition: 'right',
+				    data: list
+				});
+			}
+		});
+		
+	</script>
+</div>
