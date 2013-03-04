@@ -84,13 +84,13 @@ function handleForm(form){
 }
 
 /**************************************** JQUERY LISTENERS ****************************************/
-$('#loginForm').submit(function(e){
+$('#formLogin').submit(function(e){
 	it.login=$(this).serializeObject();
 	login(it.login);
 	return false;
 });
 
-$('#createAccount').submit(function(e){
+$('#formCreate').submit(function(e){
 	handleForm($(this));
 	return false;
 });
