@@ -48,11 +48,16 @@ function login(userInfo) {
 	console.log(userInfo);
 	var user = new StackMob.User({ username: userInfo.username, password: userInfo.password });
 	user.login(false, {
-		success: function(model) {
-			 console.debug(model);
+		success: function(model){
+			it.isValid=true;
+			it.valid=model;
+			updateModal();
 		},
-		error: function(model, response) {}
+		error: function(model, response) {
+			it.error.push(response);
+		}
 	});
+	$('#loginModal').modal('hide');
 }
 
 function promptLocation(){
