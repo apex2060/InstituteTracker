@@ -9,10 +9,8 @@ function mainCtrl($scope, $routParams){
 
 function formCtrl($scope, $routParams){
 	console.log('hi from formCtrl');
-		cp.scope=$scope;
 	$scope.submit = function() {
-		console.log($scope);
-		console.log($routParams.valueOf());
+		console.log('hi from formCtrl.submit');
 	};
 	
 	/*
