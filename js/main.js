@@ -74,6 +74,14 @@ function setLocation(position){
 
 
 
+function handleForm(form){
+	it.form=$(form).serializeObject();
+	var schema = $(form).data('schema');
+	var obj = StackMob.Model.extend({ schemaName: schema });
+	// completed will be a boolean field if it's not created already
+	var newObj = new obj(it.form);
+	newObj.create();
+}
 
 /**************************************** JQUERY LISTENERS ****************************************/
 $('#loginForm').submit(function(e){
@@ -82,9 +90,10 @@ $('#loginForm').submit(function(e){
 	return false;
 });
 
-
-
-
+$('#createAccount').submit(function(e){
+	handleForm($(this));
+	return false;
+});
 
 
 /**************************************** JQUERY FUNCTIONS ****************************************/
