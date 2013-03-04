@@ -44,19 +44,14 @@ function signup(userInfo){
 	});
 }
 function login(userInfo) {
-	var latlon = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
-	var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
-	user.create({
-	    success: function(model) {
-	        console.debug('User object is saved, username: ' + model.get('username'));
-	        it.valid=model;
-	        it.isValid=true;
-			updateModal();
-	    	$('#loginModal').modal('hide');
-	    },
-	    error: function(model, response) {
-	        console.debug(response);
-	    }
+	//var latlon = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
+
+	var user = new StackMob.User({ username: userInfo.username, password: userInfo.password });
+	user.login(false, {
+		success: function(model) {
+			 console.debug(model);
+		},
+		error: function(model, response) {}
 	});
 }
 
