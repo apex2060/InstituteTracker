@@ -2,7 +2,7 @@ angular.module('institute', []).
 	config(['$routeProvider', function($routeProvider) {
 		$routeProvider.
 		when('/home', {templateUrl: 'partials/site/main.html'}).
-		when('/account/create', {templateUrl: 'partials/account/create.html'}).
+		when('/create/:what', {templateUrl: 'partials/site/create.html', controller: formCtrl}).
 
 		otherwise({redirectTo: '/home'});
 }]);
