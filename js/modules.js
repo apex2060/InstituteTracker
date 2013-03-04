@@ -1,9 +1,12 @@
 angular.module('institute', [], function($routeProvider, $locationProvider) {
-	$routeProvider.when('/home', {templateUrl: 'partials/site/main.html', controller: mainCtrl}).
-	$routeProvider.when('/create/:what', {templateUrl: 'partials/site/create.html', controller: formCtrl}).
-	otherwise({redirectTo: '/home'});
-
-	$locationProvider.html5Mode(true);
+	$routeProvider.when('/home', {
+		templateUrl: 'partials/site/main.html',
+		controller: mainCtrl
+	});
+	$routeProvider.when('/create/:what', {
+		templateUrl: 'partials/site/create.html',
+		controller: formCtrl
+	});
 });
 
 /*		when('/list:sni', {templateUrl: 'partials/list.html',   controller: listCtrl}).
