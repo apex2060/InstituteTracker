@@ -29,20 +29,7 @@ function updateModal(){
 		scope.it = it;
 	});
 }
-function signup(userInfo){
-	var latlon = new StackMob.GeoPoint(position.coords.latitude, position.coords.longitude);
-	var user = new StackMob.User({ username: userInfo.username, password: userInfo.password, profession: 'developer', geoloc: latlon});
-	user.create({
-	    success: function(model) {
-	        console.debug('User object is saved, username: ' + model.get('username'));
-	        it.valid=model;
-	        it.isValid=true;
-	    },
-	    error: function(model, response) {
-	        console.debug(response);
-	    }
-	});
-}
+
 function login(userInfo) {
 	//var latlon = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
 	console.log(userInfo);
@@ -85,8 +72,7 @@ function handleForm(form){
 
 /**************************************** JQUERY LISTENERS ****************************************/
 $('#formLogin').submit(function(e){
-	it.login=$(this).serializeObject();
-	login(it.login);
+	login($(this).serializeObject());
 	return false;
 });
 
