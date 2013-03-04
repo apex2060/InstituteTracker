@@ -12,7 +12,7 @@ function formCtrl($scope, $element){
 		// completed will be a boolean field if it's not created already
 		var newObj = new obj(it.form);
 		newObj.create({
-			success: function(model) {
+			success: function(model, response) {
 				console.debug('User Created: ' + model.get('user_id'));
 				console.debug(response);
 			},
