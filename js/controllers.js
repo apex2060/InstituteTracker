@@ -3,8 +3,13 @@ function mainCtrl($scope){
 }
 
 function formCtrl($scope){
-	console.log('hi from formCtrl');
+	console.log(JSON.stringify($scope));
 	$scope.submit = function() {
-		console.log('hi from formCtrl.submit');
+		it.form=$(form).serializeObject();
+		var schema = $(form).data('schema');
+		var obj = StackMob.Model.extend({ schemaName: schema });
+		// completed will be a boolean field if it's not created already
+		var newObj = new obj(it.form);
+		newObj.create();
 	};
 }
