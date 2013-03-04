@@ -51,8 +51,7 @@
 			</div>
 		</div>
 
-		<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-		<button type="submit" class="btn btn-primary">Signup</button>
+		<button type="submit" class="btn btn-primary">Create Organization</button>
 	</form>
 	<script src="js/magicsuggest_class.js"></script>
 	<script src="js/magicsuggest.js"></script>
@@ -72,7 +71,9 @@
 				    renderTo: $('#org_area'),
 				    name: 'org_area',
 				    width: 250,
-				    selectionPosition: 'right',
+				    selectionPosition: 'inner',
+				    required:true,
+				    maxSelection:1,
 				    data: list
 				});
 			}
