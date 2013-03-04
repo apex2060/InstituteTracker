@@ -1,3 +1,5 @@
+cp={};
+
 function actCtrl($scope, $routeParams) {
 	console.log($routeParams.valueOf());
 	$scope.it=it;
@@ -7,8 +9,11 @@ function mainCtrl($scope, $routParams){
 }
 
 function formCtrl($scope, $rout, $routParams){
-		console.log($scope);
-		console.log($rout);
+		cp.scope=$scope;
+		cp.rout=$rout;
+		cp.routParams=$routParams;
+		console.log($scope.valueOf());
+		console.log($rout.valueOf());
 		console.log($routParams.valueOf());
 	$scope.submit = function() {
 		console.log($scope);
