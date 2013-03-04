@@ -11,6 +11,14 @@ function formCtrl($scope, $element){
 		var obj = StackMob.Model.extend({ schemaName: schema });
 		// completed will be a boolean field if it's not created already
 		var newObj = new obj(it.form);
-		newObj.create();
+		newObj.create({
+			success: function(model) {
+				console.debug('User Created: ' + model.get('user_id'));
+				console.debug(response);
+			},
+			error: function(model, response) {
+				console.debug(response);
+			}
+		});
 	};
 }
