@@ -1,3 +1,3 @@
-function mainCtrl($scope, $routParams){
+function mainCtrl($scope){
 	$scope.it=it;
 }
