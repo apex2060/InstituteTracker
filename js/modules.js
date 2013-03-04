@@ -4,7 +4,7 @@ angular.module('institute', [], function($routeProvider, $locationProvider) {
 	otherwise({redirectTo: '/home'});
 
 	$locationProvider.html5Mode(true);
-}]);
+});
 
 /*		when('/list:sni', {templateUrl: 'partials/list.html',   controller: listCtrl}).
 		when('/map:sni', {templateUrl: 'partials/map.html',   controller: mapCtrl}).
