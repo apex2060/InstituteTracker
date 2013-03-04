@@ -6,7 +6,10 @@ function mainCtrl($scope, $routParams){
 	$scope.it=it;
 }
 
-function formCtrl($scope, $routParams){
+function formCtrl($scope, $rout, $routParams){
+		console.log($scope);
+		console.log($rout);
+		console.log($routParams.valueOf());
 	$scope.submit = function() {
 		console.log($scope);
 		console.log($routParams.valueOf());
