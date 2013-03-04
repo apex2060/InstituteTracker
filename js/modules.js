@@ -1,13 +1,11 @@
-angular.module('institute', [], function($routeProvider, $locationProvider) {
-	$routeProvider.when('/home', {
-		templateUrl: 'partials/site/main.html',
-		controller: mainCtrl
-	});
-	$routeProvider.when('/create/:what', {
-		templateUrl: 'partials/site/create.html',
-		controller: formCtrl
-	});
-});
+angular.module('institute', []).
+	config(['$routeProvider', function($routeProvider) {
+		$routeProvider.
+		when('/home', {templateUrl: 'partials/site/main.html', controller:mainCtrl}).
+		when('/account/create', {templateUrl: 'partials/account/create.html', controller:formCtrl}).
+
+		otherwise({redirectTo: '/home'});
+}]);
 
 /*		when('/list:sni', {templateUrl: 'partials/list.html',   controller: listCtrl}).
 		when('/map:sni', {templateUrl: 'partials/map.html',   controller: mapCtrl}).
