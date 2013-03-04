@@ -1,5 +1,5 @@
 function actCtrl($scope, $routeParams) {
-	console.log($routeParams);
+	console.log($routeParams.valueOf());
 	$scope.it=it;
 }
 function mainCtrl($scope, $routParams){
@@ -9,7 +9,7 @@ function mainCtrl($scope, $routParams){
 function formCtrl($scope, $routParams){
 	$scope.submit = function() {
 		console.log($scope);
-		console.log($routParams.toJSON());
+		console.log($routParams.valueOf());
 	};
 	
 	/*
