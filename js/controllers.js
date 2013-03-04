@@ -3,7 +3,7 @@ function mainCtrl($scope){
 }
 
 function formCtrl($scope){
-	console.log(JSON.stringify($scope));
+	it.scope=$scope;
 	$scope.submit = function() {
 		it.form=$(form).serializeObject();
 		var schema = $(form).data('schema');
