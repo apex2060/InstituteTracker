@@ -3,7 +3,7 @@ angular.module('institute', []).
 		$routeProvider.
 		when('/home', {templateUrl: 'partials/site/main.html', controller:mainCtrl}).
 		when('/account/create', {templateUrl: 'partials/account/create.html'}).
-
+		when('/org/create', {templateUrl: 'partials/org/create.html'}).
 		otherwise({redirectTo: '/home'});
 }]);
 
