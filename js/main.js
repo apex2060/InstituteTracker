@@ -5,7 +5,7 @@ var it={};
 	it.message = function(){};
 	it.message.wisper = function(type, message){
 		$("html, body").animate({ scrollTop: 0 }, "slow");
-		$('#messaging').append('<div class="alert '+type+'"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>');
+		$('#messaging').append('<div class="alert '+type+'"><a class="close" data-dismiss="alert">x</a><span>'+message+'</span></div>');
 	}
 
 
