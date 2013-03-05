@@ -55,25 +55,6 @@ function login(userInfo) {
 	});
 	$('#loginModal').modal('hide');
 }
-function logout(){
-	var user = new StackMob.User({ username: it.valid.id});
-	console.log(user);
-	user.logout(false, {
-		success: function(model, response){
-			it.message('alert-success', model);
-			console.log(response);
-		},
-		error: function(model, response) {
-			it.message('alert-warning', model);
-			console.log(response);
-		}
-	});
-	console.log('logout');
-	console.log(user);
-	it.isValid=false;
-	it.valid={};
-	updateModal();
-}
 
 function promptLocation(){
 	if (navigator.geolocation){
