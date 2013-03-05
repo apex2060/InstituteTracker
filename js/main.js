@@ -4,7 +4,7 @@ var it={};
 	it.valid={};
 	it.isValid=StackMob.isLoggedIn();
 	if(it.isValid){
-		it.valid.id=StackMob.getLoggedInUser();
+		it.valid=$.parseJSON(localStorage.userInfo);
 	}
 	it.message = function(){};
 	it.message.wisper = function(type, message){
