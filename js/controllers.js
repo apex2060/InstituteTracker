@@ -20,7 +20,7 @@ function formCtrl($scope, $element){
 			},
 			error: function(model, response) {
 				it.error.push(response);
-				it.message.wisper('alert-error', response[0].error);
+				it.message.wisper('alert-error', response.error[0].error);
 			}
 		});
 	};
