@@ -2,13 +2,14 @@
 var it={};
 	it.error=[];
 	it.isValid=StackMob.isLoggedIn();
+	if(it.isValid){
+		it.valid=JSON.parse(localStorage.userInfo);
+	}
 	it.message = function(){};
 	it.message.wisper = function(type, message){
 		$("html, body").animate({ scrollTop: 0 }, "slow");
 		$('#messaging').append('<div class="alert '+type+'"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button><span>'+message+'</span></div>');
-	}
-	getUserInfo();
-	
+	}	
 
 
 
@@ -44,6 +45,7 @@ function login(userInfo) {
 		success: function(model){
 			it.isValid=true;
 			it.valid=model;
+			localStorage.userInfo=JSON.stringify(model);
 			updateModal();
 		},
 		error: function(model, response) {
@@ -51,21 +53,6 @@ function login(userInfo) {
 		}
 	});
 	$('#loginModal').modal('hide');
-}
-function getUserInfo(){
-	if(it.isValid){
-		var User = StackMob.Model.extend({ schemaName: 'user' });
-		var Users = StackMob.Collection.extend({ model: User });
-		var myUser = new Users();
-		var q = new StackMob.Collection.Query();
-		q.equals('username', StackMob.getLoggedInUser());
-		myTodos.query(q, {
-		    success: function(model) {
-		        it.valid=model;
-		    },
-		    error: function(model, response) {}
-		});
-	}
 }
 
 function promptLocation(){
