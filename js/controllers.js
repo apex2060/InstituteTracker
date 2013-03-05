@@ -13,11 +13,12 @@ function formCtrl($scope, $element){
 		var newObj = new obj(it.form);
 		newObj.create({
 			success: function(model, response) {
-				console.debug('User Created: ' + model.get('user_id'));
-				console.debug(response);
+				console.debug('Created: ' + model.get('user_id'));
+				it.message('alert-success', response);
 			},
 			error: function(model, response) {
-				console.debug(response);
+				it.error.push(response);
+				it.message('alert-error', response);
 			}
 		});
 	};

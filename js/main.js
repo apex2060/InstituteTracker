@@ -2,8 +2,9 @@
 var it={};
 	it.error=[];
 	it.isValid=false;
-
-
+	it.message = function(type, message){
+		$('#messaging').append('<div class="alert '+type+'"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+	}
 
 
 /**************************************** INIT STACKMOB ****************************************/
