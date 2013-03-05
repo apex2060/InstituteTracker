@@ -13,8 +13,10 @@ function formCtrl($scope, $element){
 		var newObj = new obj(it.form);
 		newObj.create({
 			success: function(model, response) {
-				console.debug('Created: ' + model.get('user_id'));
-				it.message.wisper('alert-success', response[0].error);
+				console.debug('Created:');
+				console.debug(model);
+				console.debug(response);
+				it.message.wisper('alert-success', response);
 			},
 			error: function(model, response) {
 				it.error.push(response);
