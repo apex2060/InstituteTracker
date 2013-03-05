@@ -1,9 +1,10 @@
 /**************************************** MAIN VARIABLE ****************************************/
 var it={};
 	it.error=[];
+	it.valid={};
 	it.isValid=StackMob.isLoggedIn();
 	if(it.isValid){
-		it.valid=JSON.parse(localStorage.userInfo);
+		it.valid.id=StackMob.getLoggedInUser();
 	}
 	it.message = function(){};
 	it.message.wisper = function(type, message){
@@ -45,7 +46,7 @@ function login(userInfo) {
 		success: function(model){
 			it.isValid=true;
 			it.valid=model;
-			localStorage.userInfo=JSON.stringify(model);
+			it.valid.id=StackMob.getLoggedInUser();
 			updateModal();
 		},
 		error: function(model, response) {
@@ -76,6 +77,13 @@ function handleForm(form){
 	// completed will be a boolean field if it's not created already
 	var newObj = new obj(it.form);
 	newObj.create();
+
+	if(schema=='user'){
+		it.isValid=StackMob.isLoggedIn();
+		if(it.isValid){
+			it.valid.id=StackMob.getLoggedInUser();
+		}
+	}
 }
 
 function orgCreated(response){
@@ -94,8 +102,7 @@ $('#formCreate').submit(function(e){
 
 
 /**************************************** JQUERY FUNCTIONS ****************************************/
-$.fn.serializeObject = function()
-{
+$.fn.serializeObject = function(){
    var o = {};
    var a = this.serializeArray();
    $.each(a, function() {
