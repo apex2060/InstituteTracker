@@ -73,6 +73,10 @@ function handleForm(form){
 	newObj.create();
 }
 
+orgCreated(response){
+	it.message.wisper('alert-success', response.org_name+' was created, and you were added to it.');
+}
+
 /**************************************** JQUERY LISTENERS ****************************************/
 $('#formLogin').submit(function(e){
 	login($(this).serializeObject());

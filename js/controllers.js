@@ -17,6 +17,8 @@ function formCtrl($scope, $element){
 			success: function(model, response) {
 				if(callback!=undefined)
 					callback(response);
+				else
+					it.message.wisper('alert-success', schema+' created successfully.');
 			},
 			error: function(model, response) {
 				it.error.push(response);
