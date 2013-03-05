@@ -56,7 +56,10 @@ function login(userInfo) {
 }
 function logout(){
 	var user = new StackMob.User({ username: it.valid.id});
+	console.log(user);
 	user.logout();
+	console.log('logout');
+	console.log(user);
 	it.isValid=false;
 	it.valid={};
 	updateModal();
