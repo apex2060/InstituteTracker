@@ -60,8 +60,8 @@ function logout(){
 	user.logout();
 
 	localStorage.stackmob=null;
-	localStorage.stackmob.oauth2=null;
-	localStorage.usrInfo=null;
+	localStorage.oauth2.accessToken=null;
+	localStorage.userInfo=null;
 	it.isValid=false;
 
 	it.valid={};
