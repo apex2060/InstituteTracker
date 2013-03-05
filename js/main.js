@@ -1,7 +1,7 @@
 /**************************************** MAIN VARIABLE ****************************************/
 var it={};
 	it.error=[];
-	//it.isValid=StackMob.isLoggedIn();
+	it.isValid=StackMob.isLoggedIn();
 	if(it.isValid){
 		it.valid=JSON.parse(localStorage.userInfo);
 	}
