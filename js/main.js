@@ -1,8 +1,9 @@
 /**************************************** MAIN VARIABLE ****************************************/
-var it=funtion(){};
+var it={};
 	it.error=[];
 	it.isValid=false;
-	it.message = function(type, message){
+	it.message = function(){};
+	it.message.wisper = function(type, message){
 		$('#messaging').append('<div class="alert '+type+'"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
 	}
 

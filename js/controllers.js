@@ -14,11 +14,11 @@ function formCtrl($scope, $element){
 		newObj.create({
 			success: function(model, response) {
 				console.debug('Created: ' + model.get('user_id'));
-				it.message('alert-success', response);
+				it.message.wisper('alert-success', response);
 			},
 			error: function(model, response) {
 				it.error.push(response);
-				it.message('alert-error', response);
+				it.message.wisper('alert-error', response);
 			}
 		});
 	};
