@@ -1,5 +1,5 @@
 /**************************************** MAIN VARIABLE ****************************************/
-var it={};
+var it=funtion(){};
 	it.error=[];
 	it.isValid=false;
 	it.message = function(type, message){
