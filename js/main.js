@@ -111,7 +111,9 @@ $('#formCreate').submit(function(e){
 	return false;
 });
 
-
+modal.$el.on('shown', function () {
+  $('input:text:visible:first', this).focus();
+});
 /**************************************** JQUERY FUNCTIONS ****************************************/
 $.fn.serializeObject = function(){
    var o = {};
