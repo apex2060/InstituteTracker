@@ -44,6 +44,7 @@ function login(userInfo) {
 	user.login(false, {
 		success: function(model){
 			it.isValid=true;
+			localStorage.userInfo=JSON.stringify(model);
 			it.valid=model;
 			it.valid.id=StackMob.getLoggedInUser();
 			updateModal();
