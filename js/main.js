@@ -111,7 +111,7 @@ $('#formCreate').submit(function(e){
 	return false;
 });
 
-$('#loginModal').$el.on('shown', function () {
+$('#loginModal').on('shown', function () {
   $('input:text:visible:first', this).focus();
 });
 /**************************************** JQUERY FUNCTIONS ****************************************/
