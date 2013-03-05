@@ -1,7 +1,7 @@
 /**************************************** MAIN VARIABLE ****************************************/
 var it={};
 	it.error=[];
-	it.isValid=false;
+	it.isValid=StackMob.isLoggedIn();
 	it.message = function(){};
 	it.message.wisper = function(type, message){
 		$("html, body").animate({ scrollTop: 0 }, "slow");
