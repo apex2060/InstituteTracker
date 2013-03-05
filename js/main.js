@@ -58,7 +58,12 @@ function login(userInfo) {
 function logout(){
 	var user = new StackMob.User({ username: it.valid.id});
 	user.logout();
+	
+	localStorage.stackmob=null;
+	localStorage.stackmob.oauth2.accessToken=null;
+	localStorage.usrInfo=null;
 	it.isValid=false;
+
 	it.valid={};
 	updateModal();
 }
