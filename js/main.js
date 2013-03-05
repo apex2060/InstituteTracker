@@ -40,7 +40,6 @@ function updateModal(){
 
 function login(userInfo) {
 	//var latlon = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
-	console.log(userInfo);
 	var user = new StackMob.User({ username: userInfo.username, password: userInfo.password });
 	user.login(false, {
 		success: function(model){
