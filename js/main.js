@@ -73,7 +73,7 @@ function handleForm(form){
 	newObj.create();
 }
 
-orgCreated(response){
+function orgCreated(response){
 	it.message.wisper('alert-success', response.org_name+' was created, and you were added to it.');
 }
 
