@@ -56,7 +56,7 @@
 	<script src="js/magicsuggest_class.js"></script>
 	<script src="js/magicsuggest.js"></script>
 	<script>
-		$(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+		$("input,select,textarea").not("[type=submit]").jqValidate();
 
 		var area = StackMob.Model.extend({ schemaName: 'area' });
 		var areas = StackMob.Collection.extend({ model: area });
