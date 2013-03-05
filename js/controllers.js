@@ -15,10 +15,11 @@ function formCtrl($scope, $element){
 		var newObj = new obj(it.form);
 		newObj.create({
 			success: function(model, response) {
-				if(callback!=undefined)
+				if(callback!=undefined){
 					callback(response);
-				else
+				}else{
 					it.message.wisper('alert-success', schema+' created successfully.');
+				}
 			},
 			error: function(model, response) {
 				it.error.push(response);
