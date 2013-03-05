@@ -84,6 +84,7 @@ function setLocation(position){
 function handleForm(form){
 	it.form=$(form).serializeObject();
 	var schema = $(form).data('schema');
+	it.form = validate(schema, it.form);
 	var obj = StackMob.Model.extend({ schemaName: schema });
 	// completed will be a boolean field if it's not created already
 	var newObj = new obj(it.form);
@@ -130,3 +131,18 @@ $.fn.serializeObject = function(){
    });
    return o;
 };
+
+
+/**************************************** FORM VALIDATE ****************************************/
+function validate(schema, form){
+	switch(schema){
+		//clean user form
+		case 'user':
+			delete form.password2;
+			return form;
+		break;
+		default:
+			return form;
+		break;
+	}
+}
