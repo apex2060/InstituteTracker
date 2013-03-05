@@ -4,7 +4,8 @@ var it={};
 	it.isValid=false;
 	it.message = function(){};
 	it.message.wisper = function(type, message){
-		$('#messaging').append('<div class="alert '+type+'"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+		$('#messaging').append('<div class="alert '+type+'"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>');
 	}
 
 
