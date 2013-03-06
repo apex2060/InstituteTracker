@@ -24,4 +24,5 @@ function formCtrl($scope, $element){
 			}
 		});
 	};
+	return false;
 }

@@ -88,11 +88,6 @@ $('#formLogin').submit(function(e){
 	return false;
 });
 
-$('#formCreate').submit(function(e){
-	handleForm($(this));
-	return false;
-});
-
 $('#loginModal').on('shown', function () {
   $('input:text:visible:first', this).focus();
 });
@@ -129,4 +124,5 @@ function cleanForm(schema, form){
 	default:
 		console.log('default');
 	}
+	console.log(form);
 }
