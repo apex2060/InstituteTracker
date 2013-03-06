@@ -85,7 +85,7 @@ function handleForm(form){
 	newForm=$(form).serializeObject();
 	var schema = $(form).data('schema');
 	console.log('calling cleanform');
-	it.form = cleanForm(schema, newForm);
+	//it.form = cleanForm(schema, newForm);
 	var obj = StackMob.Model.extend({ schemaName: schema });
 	// completed will be a boolean field if it's not created already
 	var newObj = new obj(it.form);
