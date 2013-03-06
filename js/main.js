@@ -116,19 +116,5 @@ $.fn.serializeObject = function(){
 
 /**************************************** FORM VALIDATE ****************************************/
 function cleanForm(schema, form){
-	switch(schema){
-		//clean user form
-		case 'user':
-			delete form.password2;
-			form.phone=form.phone.replace(/[A-Za-z$-]/g, "");
-			return form;
-		break;
-		case 'organization':
-			form.org_phone=form.org_phone.replace(/[A-Za-z$-]/g, "");
-			return form;
-		break;
-		default:
-			return form;
-		break;
-	}
+	console.log('Editing');
 }
