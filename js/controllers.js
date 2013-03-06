@@ -8,7 +8,7 @@ function formCtrl($scope, $element){
 		var form 	= angular.element($element);
 		var schema 	= $(form).data('schema');
 		var hash 	= $(form).data('hash');
-		
+
 		var newForm = cleanForm(schema, $(form).serializeObject());
 		var obj 	= StackMob.Model.extend({ schemaName: schema });
 		// completed will be a boolean field if it's not created already
@@ -25,5 +25,4 @@ function formCtrl($scope, $element){
 			}
 		});
 	};
-	return false;
 }
