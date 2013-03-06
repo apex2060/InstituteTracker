@@ -67,6 +67,7 @@ function logout(){
 	updateModal();
 }
 function handleForm(form){
+	console.log('saving form');
 	var schema 	= $(form).data('schema');
 	var hash 	= $(form).data('hash');
 
@@ -135,6 +136,7 @@ $.fn.serializeObject = function(){
 
 /**************************************** FORM VALIDATE ****************************************/
 function cleanForm(schema, form){
+	console.log('cleaning form');
 	console.log(schema);
 	console.log(form);
 	switch(schema){
