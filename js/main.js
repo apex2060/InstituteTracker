@@ -149,8 +149,5 @@ function cleanForm(schema, form){
 			form.org_phone=form.org_phone.replace(/[A-Za-z$-]/g, "");
 			return form;
 		break;
-		default:
-			return form;
-		break;
 	}
 }
