@@ -6,6 +6,7 @@ function formCtrl($scope, $element){
 	it.scope=$scope;
 	$scope.submit = function() {
 		var form 	= angular.element($element);
+		console.log('cleaning form');
 		var newForm = cleanForm(schema, $(form).serializeObject());
 		var schema 	= $(form).data('schema');
 		var hash 	= $(form).data('hash');
