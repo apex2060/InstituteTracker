@@ -5,13 +5,13 @@ function mainCtrl($scope){
 function formCtrl($scope, $element){
 	it.scope=$scope;
 	$scope.submit = function() {
-		var form = angular.element($element);
-		it.form=$(form).serializeObject();
-		var schema = $(form).data('schema');
-		var hash = $(form).data('hash');
-		var obj = StackMob.Model.extend({ schemaName: schema });
+		var form 	= angular.element($element);
+		var newForm = cleanForm(schema, $(form).serializeObject());
+		var schema 	= $(form).data('schema');
+		var hash 	= $(form).data('hash');
+		var obj 	= StackMob.Model.extend({ schemaName: schema });
 		// completed will be a boolean field if it's not created already
-		var newObj = new obj(it.form);
+		var newObj = new obj(newForm);
 		newObj.create({
 			success: function(model, response) {
 				it.message.wisper('alert-success', schema+' created successfully.');

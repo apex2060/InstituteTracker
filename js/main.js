@@ -79,7 +79,6 @@ function setLocation(position){
 	updateModal();
 }
 
-
 function orgCreated(response){
 	it.message.wisper('alert-success', response.org_name+' was created, and you were added to it.');
 }
@@ -128,6 +127,9 @@ function cleanForm(schema, form){
 		break;
 		case 'organization':
 			form.org_phone=form.org_phone.replace(/[A-Za-z$-]/g, "");
+			return form;
+		break;
+		default:
 			return form;
 		break;
 	}
