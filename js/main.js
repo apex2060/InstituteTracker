@@ -135,6 +135,8 @@ $.fn.serializeObject = function(){
 
 /**************************************** FORM VALIDATE ****************************************/
 function validate(schema, form){
+	console.log('validating');
+	console.log(schema);
 	console.log(form);
 	switch(schema){
 		//clean user form
