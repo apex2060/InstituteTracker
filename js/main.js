@@ -66,7 +66,26 @@ function logout(){
 	it.valid={};
 	updateModal();
 }
+function handleForm(form){
+	var schema 	= $(form).data('schema');
+	var hash 	= $(form).data('hash');
 
+	var newForm = cleanForm(schema, $(form).serializeObject());
+	var obj 	= StackMob.Model.extend({ schemaName: schema });
+	// completed will be a boolean field if it's not created already
+	var newObj = new obj(newForm);
+	newObj.create({
+		success: function(model, response) {
+			it.message.wisper('alert-success', schema+' created successfully.');
+			if(hash)
+				window.location.hash=hash;
+		},
+		error: function(model, response) {
+			it.error.push(response);
+			it.message.wisper('alert-error', response.error);
+		}
+	});
+}
 function promptLocation(){
 	if (navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(setLocation);
@@ -85,6 +104,11 @@ function orgCreated(response){
 /**************************************** JQUERY LISTENERS ****************************************/
 $('#formLogin').submit(function(e){
 	login($(this).serializeObject());
+	return false;
+});
+
+$('#formCreate').submit(function(e){
+	handleForm($(this));
 	return false;
 });
 
