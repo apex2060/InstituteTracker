@@ -1,7 +1,7 @@
 <div id="signup"> 
 	<form id="formCreate" class="form-horizontal" data-schema="organization" ng-submit="submit()" ng-controller="formCtrl">
 		<h3>Create Organization</h3>
-		<div class="alert alert-warning" ng-show="!it.isValid"><p>You need to login before you can create an organization.</p></div>
+		<div class="alert alert-error" ng-show="!it.isValid"><p>You need to login before you can create an organization.</p></div>
 		<hr>
 		<h4>Organization Information</h4>
 		<!--Program Name, Program Type, Parent Program, Location(GPS & Address), Contact Information, Website-->
