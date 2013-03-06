@@ -109,6 +109,7 @@ $('#formLogin').submit(function(e){
 });
 
 $('#formCreate').submit(function(e){
+	console.log('form submitted');
 	handleForm($(this));
 	return false;
 });
