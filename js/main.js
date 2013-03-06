@@ -84,6 +84,7 @@ function setLocation(position){
 function handleForm(form){
 	newForm=$(form).serializeObject();
 	var schema = $(form).data('schema');
+	console.debug('calling cleanform');
 	it.form = cleanForm(schema, newForm);
 	var obj = StackMob.Model.extend({ schemaName: schema });
 	// completed will be a boolean field if it's not created already
@@ -135,9 +136,9 @@ $.fn.serializeObject = function(){
 
 /**************************************** FORM VALIDATE ****************************************/
 function cleanForm(schema, form){
-	console.log('validating');
-	console.log(schema);
-	console.log(form);
+	console.debug('cleaning Form');
+	console.debug(schema);
+	console.debug(form);
 	switch(schema){
 		//clean user form
 		case 'user':
