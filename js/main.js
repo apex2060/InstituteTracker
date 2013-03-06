@@ -117,12 +117,14 @@ function cleanForm(schema, form){
 	case 'user':
 		console.log('is user');
 		delete form.password2;
+		form.phone=form.phone.replace(/\D/g, '');
 	break;
-	case 2:
-		console.log('is 2');
+	case 'organization':
+		form.org_phone=form.org_phone.replace(/\D/g, '');
+		form.org_area=form.org_area.replace(/[\",\],\[]/g, '');
 	break;
 	default:
 		console.log('default');
 	}
-	console.log(form);
+	return form;
 }

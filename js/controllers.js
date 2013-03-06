@@ -6,9 +6,10 @@ function formCtrl($scope, $element){
 	it.scope=$scope;
 	$scope.submit = function() {
 		var form 	= angular.element($element);
-		var newForm = cleanForm(schema, $(form).serializeObject());
 		var schema 	= $(form).data('schema');
 		var hash 	= $(form).data('hash');
+		
+		var newForm = cleanForm(schema, $(form).serializeObject());
 		var obj 	= StackMob.Model.extend({ schemaName: schema });
 		// completed will be a boolean field if it's not created already
 		var newObj = new obj(newForm);
