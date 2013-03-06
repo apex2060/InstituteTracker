@@ -80,25 +80,6 @@ function setLocation(position){
 }
 
 
-
-function handleForm(form){
-	newForm=$(form).serializeObject();
-	var schema = $(form).data('schema');
-	console.log('calling cleanform');
-	//it.form = cleanForm(schema, newForm);
-	var obj = StackMob.Model.extend({ schemaName: schema });
-	// completed will be a boolean field if it's not created already
-	var newObj = new obj(it.form);
-	newObj.create();
-
-	if(schema=='user'){
-		it.isValid=StackMob.isLoggedIn();
-		if(it.isValid){
-			it.valid.id=StackMob.getLoggedInUser();
-		}
-	}
-}
-
 function orgCreated(response){
 	it.message.wisper('alert-success', response.org_name+' was created, and you were added to it.');
 }
