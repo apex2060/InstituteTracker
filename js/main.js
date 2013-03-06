@@ -116,6 +116,7 @@ $.fn.serializeObject = function(){
 
 /**************************************** FORM VALIDATE ****************************************/
 function cleanForm(schema, form){
+	console.log(schema);
 	console.log(form);
 	switch(schema){
 	case 'user':
