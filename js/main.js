@@ -148,7 +148,6 @@ function cleanForm(schema, form){
 	break;
 	case 'organization':
 		form.org_phone=form.org_phone.replace(/\D/g, '');
-		form.org_area=form.org_area.replace(/[\",\],\[]/g, '');
 	break;
 	default:
 		console.log('default');
