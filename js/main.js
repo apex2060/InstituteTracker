@@ -108,12 +108,6 @@ $('#formLogin').submit(function(e){
 	return false;
 });
 
-$('#formCreate').submit(function(e){
-	console.log('form submitted');
-	handleForm($(this));
-	return false;
-});
-
 $('#loginModal').on('shown', function () {
   $('input:text:visible:first', this).focus();
 });
