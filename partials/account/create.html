@@ -44,17 +44,15 @@
 		<div class="control-group">
 			<label class="control-label" for="password2">Re-Enter Password</label>
 			<div class="controls">
-				<input type="password" id="password2" name="password2" placeholder="Password" 
-					data-validation-match-match="#password" 
-					data-validation-matches-message="Your passwords must match."
-    				required>
+				<input type="password" id="password2" name="password2" placeholder="Password" data-validation-match-match="password" required>
 			</div>
 		</div>
 
 		<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 		<button type="submit" class="btn btn-primary">Signup</button>
 	</form>
+	<script src="js/validation.js"></script>
 	<script>
-		$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+		$("input,select,textarea").not("[type=submit]").jqValidate();
 	</script>
 </div>
