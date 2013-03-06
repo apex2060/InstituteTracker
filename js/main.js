@@ -141,6 +141,11 @@ function validate(schema, form){
 			delete form.password2;
 			return form;
 		break;
+		case 'organization':
+			form.org_phone=form.org_phone.replace(/[A-Za-z$-]/g, "");
+			form.org_area=form.org_area.replace(/[\",\],\[]/, "");
+			return form;
+		break;
 		default:
 			return form;
 		break;
