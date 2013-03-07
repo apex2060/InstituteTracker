@@ -10,8 +10,7 @@ var it={};
 	it.message.wisper = function(type, message){
 		$("html, body").animate({ scrollTop: 0 }, "slow");
 		$('#messaging').append('<div class="alert '+type+'"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button><span>'+message+'</span></div>');
-	}	
-
+	}
 
 
 /**************************************** INIT STACKMOB ****************************************/

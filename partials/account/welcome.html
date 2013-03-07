@@ -1,0 +1,58 @@
+<div class="hero-unit">
+	<h1>Welcome {{it.valid.first_name}}!</h1>
+	<p>This is a mission-like map for your students.  You can keep track of your students and their progress while they attend seminary and help them through to continue active in institute after graduation.  To begin, join or create a program below.</p>
+</div>
+<div class="row-fluid">
+	<div class="span6">
+		<h2>Seminary</h2>
+		<div class="control-group">
+			<label class="control-label" for="org_area_sem">Area</label>
+			<div class="controls">
+				<input type="text" id="org_area_sem" name="org_area_sem" placeholder="Last Name" required>
+				<span class="help-inline">This may be your state.</span>
+			</div>
+		</div>
+		<p><a class="btn" href="#/org/create/">Create New &raquo;</a></p>
+	</div><!--/span-->
+	<div class="span6">
+		<h2>Institute</h2>
+		<div class="control-group">
+			<label class="control-label" for="org_area_ins">Area</label>
+			<div class="controls">
+				<input type="text" id="org_area_ins" name="org_area_ins" placeholder="Last Name" required>
+				<span class="help-inline">This may be your state.</span>
+			</div>
+		</div>
+		<p><a class="btn" href="#/org/create/">Create New &raquo;</a></p>
+	</div><!--/span-->
+
+	<script src="js/magicsuggest_class.js"></script>
+	<script src="js/magicsuggest.js"></script>
+	<script>
+		var area = StackMob.Model.extend({ schemaName: 'area' });
+		var areas = StackMob.Collection.extend({ model: area });
+		var allAreas = new areas();
+		allAreas.fetch({
+			success: function(areas) {
+				var list = jQuery.map(areas.toJSON(), function (a) {
+					var t={};
+					t.id=a.area_id;
+					t.name=a.name;
+					return t;
+				});
+				new MagicSuggest({
+				    renderTo: $('#org_area_sem'),
+				    name: 'org_area',
+				    selectionPosition: 'inner',
+				    width: 250,
+				    required:true,
+				    maxSelection:1,
+				    resultAsString:true,
+				    editable:false,
+				    data: list
+				});
+			}
+		});
+	</script>
+</div><!--/row-->
+
