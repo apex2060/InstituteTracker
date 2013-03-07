@@ -79,6 +79,8 @@ function handleForm(form){
 			it.message.wisper('alert-success', schema+' created successfully.');
 			if(hash)
 				window.location.hash=hash;
+			if(schema=='user')
+				login(newForm);
 		},
 		error: function(model, response) {
 			it.error.push(response);
