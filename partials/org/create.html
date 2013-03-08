@@ -98,7 +98,7 @@
 			$('#org_email').val(contact['email']);
 		});
 		$('#org_address').blur(function(){
-			showAddress();
+			codeAddress();
 		});
 
 		loadMapScript();
@@ -123,16 +123,14 @@
 			var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 		}
 
-		function showAddress() {
-			var geocoder 	= new google.maps.Geocoder();
-			var address 	= $('#org_address').val();
-			geocoder.getLatLng(address,
-				function(point) {
-					if(point) {
-						initialize_map(point.x,point.y);
-					}
-				}
-			);
+		geocoder = new google.maps.Geocoder();
+		function codeAddress(address) {
+		    var address = document.getElementById("address").value;
+		    geocoder.geocode( { 'address': address}, function(results, status) {
+			    	if (status == google.maps.GeocoderStatus.OK) {
+			        console.log(results[0].geometry);
+			    }
+			});
 		}
 	</script>
 </div>
