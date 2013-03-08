@@ -97,8 +97,23 @@
 			$('#org_phone').val(contact['phone']);
 			$('#org_email').val(contact['email']);
 		});
+		$('#org_address').blur(function(){
+			var address=$(this).val();
+			$.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+address+'&sensor=false', function(data) {
+				console.log(data);
+			});
+		});
 
-		function loadMap(){
+		loadMapScript();
+
+		function loadMapScript(){
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false&callback=initialize_map";
+			document.body.appendChild(script);
+		}
+
+		function initialize_map(){
 			var mapOptions = {
 				center: new google.maps.LatLng(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude),
 				zoom: 8,
