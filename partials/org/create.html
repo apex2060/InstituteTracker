@@ -101,6 +101,9 @@
 			codeAddress($(this).val());
 		});
 
+
+		/* MAPS */
+		var map;
 		loadMapScript();
 
 		function loadMapScript(){
@@ -118,17 +121,20 @@
 			}
 			var mapOptions = {
 				center: new google.maps.LatLng(lat,lng),
-				zoom: 8,
+				zoom: 14,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
-			var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+			map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 		}
 
 		function codeAddress(address){
 		    it.geocoder.geocode( { 'address': address}, function(results, status) {
 			    if (status == google.maps.GeocoderStatus.OK) {
 			    	var geo = results[0].geometry.location;
-			        initialize_map(geo.ib, geo.jb)
+
+			        map.setCenter(point, 16);
+			        var marker = new GMarker(point, {draggable: true});        
+					map.addOverlay(marker);
 			    }
 			});
 		}
