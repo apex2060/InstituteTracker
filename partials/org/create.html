@@ -99,7 +99,7 @@
 		});
 		$('#org_address').blur(function(){
 			var address=$(this).val();
-			$.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+address+'&sensor=false&callback=?', function(data) {
+			$.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+address+'&sensor=false&key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&callback=?', function(data) {
 				console.log(data);
 			});
 		});
