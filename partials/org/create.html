@@ -98,7 +98,7 @@
 			$('#org_email').val(contact['email']);
 		});
 		$('#org_address').blur(function(){
-			codeAddress();
+			codeAddress($(this).val());
 		});
 
 		loadMapScript();
@@ -124,7 +124,7 @@
 			var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 		}
 
-		function codeAddress(address) {
+		function codeAddress(address){
 		    it.geocoder.geocode( { 'address': address}, function(results, status) {
 			    	if (status == google.maps.GeocoderStatus.OK) {
 			        console.log(results[0].geometry);
