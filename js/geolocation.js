@@ -3,19 +3,17 @@ function updateCoord(latLng){
 }
 
 function initialize_map(lat, lng) {
-	if (GBrowserIsCompatible()) {
-		var map = new GMap2(document.getElementById("map_canvas"));
-		map.setCenter(new GLatLng(lat, lng), 16);
-		map.setUIToDefault();
-		var marker = new GMarker(new GLatLng(lat, lng), {draggable: true});        
-		map.addOverlay(marker);
-		GEvent.addListener(marker, "dragend", function() {
-			updateCoord(marker.getLatLng());
-			marker.closeInfoWindow();
-		});
-		marker.openInfoWindow("Drag this to the actual location.");
+	var map = new GMap2(document.getElementById("map_canvas"));
+	map.setCenter(new GLatLng(lat, lng), 16);
+	map.setUIToDefault();
+	var marker = new GMarker(new GLatLng(lat, lng), {draggable: true});        
+	map.addOverlay(marker);
+	GEvent.addListener(marker, "dragend", function() {
 		updateCoord(marker.getLatLng());
-	}
+		marker.closeInfoWindow();
+	});
+	marker.openInfoWindow("Drag this to the actual location.");
+	updateCoord(marker.getLatLng());
 }
 
 function parseContact(str){
