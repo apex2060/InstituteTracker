@@ -101,23 +101,35 @@
 		});
 
 		$('#quickpaste').blur(function(){
-			var phone = extractContact($('#quickpaste').val());
-				if(phone)
-					console.log('Phone: '+phone);
+			var lines 	= $('#quickpaste').val().split("\n");
+			var contact = [];
 
-			var lines = $('#quickpaste').val().split("\n");
 			for(var i=0; i<lines.length; i++){
-				console.log(lines[i]);
+				contact[checkType(lines[i])]=lines[i];
 			}
+			console.log(contact);
 		})
 
-		function extractContact(str){
-			var match = str.match(".*[^0-9-( )] ([0-9-( )]+)$");
-			if (match.length>0){
-				return match;
+		function checkType(str){
+			var numbers=str.replace(/\D/g, '');
+			var words=str.replace(/\W/g, '');
+			if(numbers.length==9){
+				return 'address_zip'
+			}else if(numbers.length==7 || numbers.length==10 || numbers.length==11){
+				return 'phone';
+			}else if(str.indexOf("@") !== -1){
+				return 'email';
+			}else if(numbers.length>0){
+				return 'address_street';
 			}else{
-				return false;
+				retunr 'unknown';
 			}
 		}
 	</script>
 </div>
+
+405 359-6688
+417 N University
+Edmond, OK USA 73034-5236
+ 
+joefentonrealtor@gmail.com
