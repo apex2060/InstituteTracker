@@ -22,10 +22,11 @@
 				</label>
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label">{{org_type}}</label>
+		<div class="control-group" ng-show="org_type=='Institute'">
+			<label class="control-label"></label>
 			<div class="controls">
-				<a class="btn btn-warning" target="_new" href="http://institute.lds.org/find-institute/Search?q={{org_name}}&lang=eng" ng-show="org_type=='Institute'">Lookup On LDS.org</a>
+				<a class="btn btn-warning" target="_new" href="http://institute.lds.org/find-institute/Search?q={{org_name}}&lang=eng">Lookup On LDS.org</a>
+				<textarea id="quickpaste"></textarea>
 			</div>
 		</div>
 		<div class="control-group">
@@ -67,8 +68,10 @@
 
 		<button type="submit" class="btn btn-primary">Create Organization</button>
 	</form>
+	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4" type="text/javascript"></script>
 	<script src="js/magicsuggest_class.js"></script>
 	<script src="js/magicsuggest.js"></script>
+	<script language="javascript" src="js/geolocation.js"></script>
 	<script>
 		$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
 
@@ -96,5 +99,12 @@
 				});
 			}
 		});
+
+		$('#quickpaste').blur(function(){
+			var lines = $('#quickpaste').val().split("\n");
+			for(var i=0; i<lines.length; i++){
+				console.log(lines[i]);
+			}
+		})
 	</script>
 </div>

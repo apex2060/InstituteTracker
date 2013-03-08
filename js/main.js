@@ -1,5 +1,10 @@
 /**************************************** MAIN VARIABLE ****************************************/
 var it={};
+	it.config={};
+	it.config.google_api_key='AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4';
+
+
+/**************************************** DO NOT EDIT ****************************************/
 	it.error=[];
 	it.valid={};
 	it.isValid=StackMob.isLoggedIn();
