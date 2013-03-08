@@ -102,9 +102,6 @@ function promptLocation(){
 }
 function setLocation(position){
 	it.currentLocation=position;
-	if(initialize_map!=undefined){
-		initialize_map(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
-	}
 	updateModal();
 }
 
