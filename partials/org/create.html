@@ -15,17 +15,17 @@
 			<label class="control-label" for="org_type">Program Type</label>
 			<div class="controls">
 				<label class="radio inline">
-					<input type="radio" id="org_type" name="org_type" value="Seminary" ng-model="is_seminary" required> Seminary
+					<input type="radio" id="org_type" name="org_type" value="Seminary" ng-model="org_type" required> Seminary
 				</label>
 				<label class="radio inline">
-					<input type="radio" id="org_type" name="org_type" value="Institute" ng-model="is_institute" required> Institute
+					<input type="radio" id="org_type" name="org_type" value="Institute" ng-model="org_type" required> Institute
 				</label>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label"></label>
+			<label class="control-label">{{org_type}}</label>
 			<div class="controls">
-				<a class="btn btn-warning" target="_new" href="http://institute.lds.org/find-institute/Search?q={{org_name}}&lang=eng" ng-show="is_institute">Lookup On LDS.org</a>
+				<a class="btn btn-warning" target="_new" href="http://institute.lds.org/find-institute/Search?q={{org_name}}&lang=eng" ng-show="{{org_type=='Institute'}}">Lookup On LDS.org</a>
 			</div>
 		</div>
 		<div class="control-group">
