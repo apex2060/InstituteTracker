@@ -98,8 +98,16 @@
 			$('#org_phone').val(contact['phone']);
 			$('#org_email').val(contact['email']);
 		});
-		$('#org_address').blur(function(){
-			initialize_map(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
-		});
+
+		$(function(){
+			var mapOptions = {
+				center: new google.maps.LatLng(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude),
+				zoom: 8,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+			initialize();
+		})
+		
 	</script>
 </div>
