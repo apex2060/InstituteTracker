@@ -79,3 +79,31 @@ function placeAddress(a){
 	document.getElementById('state').value=a.address.adminCode1;
 	document.getElementById('zip').value=a.address.postalcode;
 }
+
+
+
+function parseContact(str){
+	var lines 	= str.split("\n");
+	var contact = [];
+
+	for(var i=0; i<lines.length; i++){
+		contact[checkType(lines[i])]=lines[i];
+	}
+	return contact;
+}
+
+function checkType(str){
+	var numbers=str.replace(/\D/g, '');
+	var words=str.replace(/\W/g, '');
+	if(numbers.length==9){
+		return 'address_zip'
+	}else if(numbers.length==7 || numbers.length==10 || numbers.length==11){
+		return 'phone';
+	}else if(str.indexOf("@") !== -1){
+		return 'email';
+	}else if(numbers.length>0){
+		return 'address_street';
+	}else{
+		retunr 'unknown';
+	}
+}
