@@ -48,7 +48,7 @@
 			</div>
 		</div>
 
-		<img class="map" src="http://maps.googleapis.com/maps/api/staticmap?center={{it.currentLocation.coords.latitude}},{{it.currentLocation.coords.longitude}}&zoom=16&size=400x250&markers=color:blue%7Clabel:*%7C{{it.currentLocation.coords.latitude}},{{it.currentLocation.coords.longitude}}&sensor=false"></img>
+		<img id="map_canvas" class="map" src="http://maps.googleapis.com/maps/api/staticmap?center={{it.currentLocation.coords.latitude}},{{it.currentLocation.coords.longitude}}&zoom=16&size=400x250&markers=color:blue%7Clabel:*%7C{{it.currentLocation.coords.latitude}},{{it.currentLocation.coords.longitude}}&sensor=false"></img>
 
 		<div class="control-group">
 			<label class="control-label" for="org_area">Area</label>
@@ -98,5 +98,7 @@
 			$('#org_phone').val(contact['phone']);
 			$('#org_email').val(contact['email']);
 		});
+
+		initialize(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
 	</script>
 </div>
