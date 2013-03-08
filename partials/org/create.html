@@ -6,6 +6,17 @@
 		<h4>Organization Information</h4>
 		<!--Program Name, Program Type, Parent Program, Location(GPS & Address), Contact Information, Website-->
 		<div class="control-group">
+			<label class="control-label" for="org_type">Program Type</label>
+			<div class="controls">
+				<label class="radio inline">
+					<input type="radio" id="org_type" name="org_type" value="Seminary" ng-model="org_type" required> Seminary
+				</label>
+				<label class="radio inline">
+					<input type="radio" id="org_type" name="org_type" value="Institute" ng-model="org_type" required> Institute
+				</label>
+			</div>
+		</div>
+		<div class="control-group">
 			<label class="control-label" for="org_name">Program Name</label>
 			<div class="controls">
 				<input type="text" id="org_name" name="org_name" placeholder="Program Name" ng-model="org_name" required>
@@ -15,17 +26,6 @@
 			<label class="control-label" for="org_director">Director Name</label>
 			<div class="controls">
 				<input type="text" id="org_director" name="org_director" placeholder="Director Name" required>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="org_type">Program Type</label>
-			<div class="controls">
-				<label class="radio inline">
-					<input type="radio" id="org_type" name="org_type" value="Seminary" ng-model="org_type" required> Seminary
-				</label>
-				<label class="radio inline">
-					<input type="radio" id="org_type" name="org_type" value="Institute" ng-model="org_type" required> Institute
-				</label>
 			</div>
 		</div>
 		<div class="control-group" ng-show="org_type=='Institute'">
@@ -51,7 +51,7 @@
 			</div>
 		</div>
 
-		<div id="map_canvas" class="map"></div>
+		<div class="map"><div id="map_canvas"></div></div>
 
 		<div class="control-group">
 			<label class="control-label" for="org_area">Area</label>
