@@ -48,7 +48,7 @@
 			</div>
 		</div>
 
-		<img id="map_canvas" class="map" src="http://maps.googleapis.com/maps/api/staticmap?center={{it.currentLocation.coords.latitude}},{{it.currentLocation.coords.longitude}}&zoom=16&size=400x250&markers=color:blue%7Clabel:*%7C{{it.currentLocation.coords.latitude}},{{it.currentLocation.coords.longitude}}&sensor=false"></img>
+		<div id="map_canvas" class="map"></div>
 
 		<div class="control-group">
 			<label class="control-label" for="org_area">Area</label>
@@ -60,7 +60,7 @@
 
 		<button type="submit" class="btn btn-primary">Create Organization</button>
 	</form>
-	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4" type="text/javascript"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false"></script>
 	<script src="js/magicsuggest_class.js"></script>
 	<script src="js/magicsuggest.js"></script>
 	<script language="javascript" src="js/geolocation.js"></script>
