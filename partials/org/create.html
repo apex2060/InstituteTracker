@@ -124,7 +124,7 @@
 		}
 
 		function showAddress() {
-			var geocoder 	= new GClientGeocoder();
+			var geocoder 	= new google.maps.Geocoder();
 			var address 	= $('#org_address').val();
 			geocoder.getLatLng(address,
 				function(point) {
