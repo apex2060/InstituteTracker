@@ -98,10 +98,7 @@
 			$('#org_email').val(contact['email']);
 		});
 		$('#org_address').blur(function(){
-			var address=$(this).val();
-			$.get('http://maps.googleapis.com/maps/api/geocode/json?address='+address+'&sensor=false&callback=?', function(data) {
-				console.log(data.results[0].geometry.location.lat);
-			}, 'JSON');
+			showAddress();
 		});
 
 		loadMapScript();
@@ -113,13 +110,29 @@
 			document.body.appendChild(script);
 		}
 
-		function initialize_map(){
+		function initialize_map(lat,lng){
+			if(lat==undefined){
+				var lat = it.currentLocation.coords.latitude;
+				var lng = it.currentLocation.coords.longitude;
+			}
 			var mapOptions = {
-				center: new google.maps.LatLng(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude),
+				center: new google.maps.LatLng(lat,lng),
 				zoom: 8,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
 			var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-		} 
+		}
+
+		function showAddress() {
+			var geocoder 	= new GClientGeocoder();
+			var address 	= $('#org_address').val();
+			geocoder.getLatLng(address,
+				function(point) {
+					if(point) {
+						initialize_map(point.x,point.y);
+					}
+				}
+			);
+		}
 	</script>
 </div>
