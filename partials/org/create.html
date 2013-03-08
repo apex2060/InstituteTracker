@@ -133,7 +133,7 @@
 			    	var geo = results[0].geometry.location;
 
 			        map.setCenter(geo, 16);
-			        var marker = new GMarker(geo, {draggable: true});        
+			        var marker = new google.maps.Marker(geo, {draggable: true});        
 					map.addOverlay(marker);
 			    }
 			});
