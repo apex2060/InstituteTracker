@@ -104,6 +104,6 @@ function checkType(str){
 	}else if(numbers.length>0){
 		return 'address_street';
 	}else{
-		retunr 'unknown';
+		return 'unknown';
 	}
 }
