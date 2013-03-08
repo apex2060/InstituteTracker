@@ -2,7 +2,7 @@ function updateCoord(latLng){
 	console.log(latLng);
 }
 
-function initialize(lat, lng) {
+function initialize_map(lat, lng) {
 	if (GBrowserIsCompatible()) {
 		var map = new GMap2(document.getElementById("map_canvas"));
 		map.setCenter(new GLatLng(lat, lng), 16);
