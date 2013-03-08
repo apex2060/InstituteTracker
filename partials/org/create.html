@@ -101,10 +101,23 @@
 		});
 
 		$('#quickpaste').blur(function(){
+			var phone = extractContact($('#quickpaste').val());
+				if(phone)
+					console.log('Phone: '+phone);
+
 			var lines = $('#quickpaste').val().split("\n");
 			for(var i=0; i<lines.length; i++){
 				console.log(lines[i]);
 			}
 		})
+
+		function extractContact(str){
+			var match = str.match(".*[^0-9-( )] ([0-9-( )]+)$");
+			if (match.length>0){
+				return match;
+			}else{
+				return false;
+			}
+		}
 	</script>
 </div>
