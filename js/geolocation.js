@@ -95,7 +95,8 @@ function parseContact(str){
 function checkType(str){
 	var numbers=str.replace(/\D/g, '');
 	var words=str.replace(/\W/g, '');
-	if(numbers.length==9){
+	var nospace=str.replace(/\W /g, '');
+	if(numbers.length==9 || numbers.length==5){
 		return 'address_zip'
 	}else if(numbers.length==7 || numbers.length==10 || numbers.length==11){
 		return 'phone';
@@ -103,7 +104,7 @@ function checkType(str){
 		return 'email';
 	}else if(numbers.length>0){
 		return 'address_street';
-	}else{
+	}else if(nospace.length>0){
 		return 'unknown';
 	}
 }
