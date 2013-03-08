@@ -132,8 +132,8 @@
 			    if (status == google.maps.GeocoderStatus.OK) {
 			    	var geo = results[0].geometry.location;
 
-			        map.setCenter(point, 16);
-			        var marker = new GMarker(point, {draggable: true});        
+			        map.setCenter(geo, 16);
+			        var marker = new GMarker(geo, {draggable: true});        
 					map.addOverlay(marker);
 			    }
 			});
