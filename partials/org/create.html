@@ -98,8 +98,8 @@
 			$('#org_phone').val(contact['phone']);
 			$('#org_email').val(contact['email']);
 		});
-		$(document).ready(function() {
+		$('#org_address').blur(function(){
 			initialize_map(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
-		})
+		});
 	</script>
 </div>
