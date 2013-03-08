@@ -126,8 +126,9 @@
 
 		function codeAddress(address){
 		    it.geocoder.geocode( { 'address': address}, function(results, status) {
-			    	if (status == google.maps.GeocoderStatus.OK) {
-			        console.log(results[0].geometry);
+			    if (status == google.maps.GeocoderStatus.OK) {
+			    	var geo = results[0].geometry.location;
+			        initialize_map(geo.ib, geo.jb)
 			    }
 			});
 		}
