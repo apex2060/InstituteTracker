@@ -33,15 +33,15 @@
 		var Orgs = StackMob.Collection.extend({ model: Org });
 		var seminaries = new Orgs();
 		var q = new StackMob.Collection.Query();
-		q.equals('org_type', 'Seminary');
-		q.orderAsc('org_name'); //sort by title in ascending order
+		q.equals('type', 'Seminary');
+		q.orderAsc('name'); //sort by title in ascending order
 		q.setRange(0,50); //get the first 10.  second 10 would be setRange(10,19)
 		seminaries.query(q, {
 		    success: function(orgs) {
 		        var list = jQuery.map(orgs.toJSON(), function (a) {
 					var t={};
 					t.id=a.organization_id;
-					t.name=a.org_name;
+					t.name=a.name;
 					return t;
 				});
 				new MagicSuggest({
@@ -58,14 +58,14 @@
 		var institutes = new Orgs();
 		var q = new StackMob.Collection.Query();
 		q.equals('org_type', 'Institute');
-		q.orderAsc('org_name'); //sort by title in ascending order
+		q.orderAsc('name'); //sort by title in ascending order
 		q.setRange(0,50); //get the first 10.  second 10 would be setRange(10,19)
 		institutes.query(q, {
 		    success: function(orgs) {
 		        var list = jQuery.map(orgs.toJSON(), function (a) {
 					var t={};
 					t.id=a.organization_id;
-					t.name=a.org_name;
+					t.name=a.name;
 					return t;
 				});
 				new MagicSuggest({
