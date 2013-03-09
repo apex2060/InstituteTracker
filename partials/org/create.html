@@ -1,62 +1,64 @@
 <div id="signup" ng-app> 
 	<form id="formCreate" class="form-horizontal" data-schema="organization" data-hash="/org/list" ng-submit="submit()" ng-controller="formCtrl">
+		<input type="hidden" id="lat" value="default">
+		<input type="hidden" id="lng" value="default">
 		<h3>Create Organization</h3>
 		<div class="alert alert-error" ng-show="!it.isValid"><p>Welcome!  You need to login before you can create an organization.</p></div>
 		<hr>
 		<h4>Organization Information</h4>
 		<!--Program Name, Program Type, Parent Program, Location(GPS & Address), Contact Information, Website-->
 		<div class="control-group">
-			<label class="control-label" for="org_type">Program Type</label>
+			<label class="control-label" for="type">Program Type</label>
 			<div class="controls">
 				<label class="radio inline">
-					<input type="radio" id="org_type" name="org_type" value="Seminary" ng-model="org_type" required> Seminary
+					<input type="radio" id="type" name="type" value="Seminary" ng-model="type" required> Seminary
 				</label>
 				<label class="radio inline">
-					<input type="radio" id="org_type" name="org_type" value="Institute" ng-model="org_type" required> Institute
+					<input type="radio" id="type" name="type" value="Institute" ng-model="type" required> Institute
 				</label>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="org_name">Program Name</label>
+			<label class="control-label" for="name">Program Name</label>
 			<div class="controls">
-				<input type="text" id="org_name" name="org_name" placeholder="Program Name" ng-model="org_name" required>
+				<input type="text" id="name" name="name" placeholder="Program Name" ng-model="name" required>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="org_director">Director Name</label>
+			<label class="control-label" for="director">Director Name</label>
 			<div class="controls">
-				<input type="text" id="org_director" name="org_director" placeholder="Director Name" required>
+				<input type="text" id="director" name="director" placeholder="Director Name" required>
 			</div>
 		</div>
-		<div class="control-group" ng-show="org_type=='Institute'">
+		<div class="control-group" ng-show="type=='Institute'">
 			<label class="control-label" title="You can copy the 'Contact' information from LDS.org  and paste it here to quickly add it.">Quick Paste</label>
 			<div class="controls">
 				<textarea id="quickpaste"></textarea>
 			</div>
 			<label class="control-label"></label>
 			<div class="controls">
-				<a class="btn btn-warning" target="_new" href="http://institute.lds.org/find-institute/Search?q={{org_name}}&lang=eng">Lookup On LDS.org</a>
+				<a class="btn btn-warning" target="_new" href="http://institute.lds.org/find-institute/Search?q={{name}}&lang=eng">Lookup On LDS.org</a>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="org_address">Address</label>
+			<label class="control-label" for="address">Address</label>
 			<div class="controls">
-				<input type="text" id="org_address" name="org_address" placeholder="Address" required>
+				<input type="text" id="address" name="address" placeholder="Address" required>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="org_phone">Phone Number</label>
+			<label class="control-label" for="phone">Phone Number</label>
 			<div class="controls">
-				<input type="tel" id="org_phone" name="org_phone" placeholder="555-555-5555" required>
+				<input type="tel" id="phone" name="phone" placeholder="555-555-5555" required>
 			</div>
 		</div>
 
 		<div class="map"><div id="map_canvas"></div></div>
 
 		<div class="control-group">
-			<label class="control-label" for="org_area">Area</label>
+			<label class="control-label" for="area">Area</label>
 			<div class="controls">
-				<input type="text" id="org_area" name="org_area" placeholder="Last Name" required>
+				<input type="text" id="area" name="area" placeholder="Last Name" required>
 				<span class="help-inline">This may be your state.</span>
 			</div>
 		</div>
@@ -81,8 +83,8 @@
 					return t;
 				});
 				new MagicSuggest({
-				    renderTo: $('#org_area'),
-				    name: 'org_area',
+				    renderTo: $('#area'),
+				    name: 'area',
 				    selectionPosition: 'inner',
 				    width: 250,
 				    required:true,
@@ -96,11 +98,12 @@
 
 		$('#quickpaste').blur(function(){
 			var contact	= parseContact($('#quickpaste').val());
-			$('#org_address').val(contact['address_street']+' '+contact['address_zip']);
-			$('#org_phone').val(contact['phone']);
-			$('#org_email').val(contact['email']);
+			$('#address').val(contact['address_street']+' '+contact['address_zip']);
+			$('#phone').val(contact['phone']);
+			$('#email').val(contact['email']);
+			codeAddress(contact['address_street']+' '+contact['address_zip']);
 		});
-		$('#org_address').blur(function(){
+		$('#address').blur(function(){
 			codeAddress($(this).val());
 		});
 
@@ -134,7 +137,10 @@
 		    it.geocoder.geocode( { 'address': address}, function(results, status) {
 			    if (status == google.maps.GeocoderStatus.OK) {
 			    	var geo = results[0].geometry.location;
+			    	console.log(geo);
 
+			    	$('#lat').val(geo.ib);
+			    	$('#lng').val(geo.jb);
 			        map.setCenter(geo, 16);
 
 			        var marker = new google.maps.Marker({

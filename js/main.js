@@ -77,6 +77,14 @@ function handleForm(form){
 
 	var newForm = cleanForm(schema, $(form).serializeObject());
 	var obj 	= StackMob.Model.extend({ schemaName: schema });
+
+	if($('#lat')!=undefined){
+		if($('#lat').val()=='default'){
+			var newForm.geo = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
+		}else{
+			var newForm.geo = new StackMob.GeoPoint($('#lat').val(), $('#lng').val());
+		}
+	}
 	// completed will be a boolean field if it's not created already
 	var newObj = new obj(newForm);
 	newObj.create({
