@@ -83,7 +83,7 @@ function handleForm(form){
 			var geo 	= new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
 			newForm.geo = geo.toJSON();
 		}else{
-			var geo 	= new StackMob.GeoPoint(Number($('#lat').val());, Number($('#lng').val()););
+			var geo 	= new StackMob.GeoPoint(Number($('#lat').val()), Number($('#lng').val()));
 			newForm.geo = geo.toJSON();
 		}
 	}
