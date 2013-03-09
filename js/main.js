@@ -78,7 +78,7 @@ function handleForm(form){
 	var newForm = cleanForm(schema, $(form).serializeObject());
 	var obj 	= StackMob.Model.extend({ schemaName: schema });
 
-	if($('#lat')!=undefined){
+	if($('#lat').length>0){
 		if($('#lat').val()=='default'){
 			var newForm.geo = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
 		}else{
