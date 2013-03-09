@@ -80,9 +80,9 @@ function handleForm(form){
 
 	if($('#lat').length>0){
 		if($('#lat').val()=='default'){
-			var newForm.geo = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
+			newForm.geo = new StackMob.GeoPoint(it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
 		}else{
-			var newForm.geo = new StackMob.GeoPoint($('#lat').val(), $('#lng').val());
+			newForm.geo = new StackMob.GeoPoint($('#lat').val(), $('#lng').val());
 		}
 	}
 	// completed will be a boolean field if it's not created already
