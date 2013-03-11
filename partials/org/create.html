@@ -153,8 +153,15 @@
 			        	map: map, 
 			        	position: geo
 			        });
+
+			        it.marker.setDraggable (true);
+			        google.maps.event.addListener(it.marker, "dragend", markerMove(event));
 			    }
 			});
+		}
+		function markerMove(event){
+        	it.point = it.marker.getPosition();
+        	map.panTo(point);
 		}
 	</script>
 </div>
