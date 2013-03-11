@@ -136,7 +136,7 @@
 				zoom: 14,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
-			map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+			it.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 		}
 
 		function codeAddress(address){
@@ -147,21 +147,21 @@
 
 			    	$('#lat').val(geo.ib);
 			    	$('#lng').val(geo.jb);
-			        map.setCenter(geo, 16);
+			        it.map.setCenter(geo, 16);
 
 			        it.marker = new google.maps.Marker({
-			        	map: map, 
+			        	map: it.map, 
 			        	position: geo
 			        });
 
 			        it.marker.setDraggable (true);
-			        google.maps.event.addListener(it.marker, "dragend", markerMove(event));
+			        google.maps.event.addListener(it.marker, "dragend", markerMove);
 			    }
 			});
 		}
 		function markerMove(event){
         	it.point = it.marker.getPosition();
-        	map.panTo(it.point);
+        	it.map.panTo(it.point);
         	console.log(it.point);
 		}
 	</script>
