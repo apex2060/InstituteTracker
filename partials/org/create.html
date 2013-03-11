@@ -102,67 +102,25 @@
 			}
 		});
 
+		var mapData={};
+			mapData.canvasId='';
+			mapData.lat 	=;
+			mapData.lng 	=;
+		maps.newMap(mapData);
+
+		// Update address fields when quick pasted.
 		$('#quickpaste').blur(function(){
 			var contact	= parseContact($('#quickpaste').val());
 			$('#address').val(contact['address_street']+' '+contact['address_zip']);
 			$('#phone').val(contact['phone']);
 			$('#email').val(contact['email']);
-			codeAddress(contact['address_street']+' '+contact['address_zip']);
+			
+			maps.setFromAddress(maps.openMaps[0], contact['address_street']+' '+contact['address_zip']);
+			//codeAddress(contact['address_street']+' '+contact['address_zip']);
 		});
+		//update map when address is updated.
 		$('#address').blur(function(){
-			codeAddress($(this).val());
+			//codeAddress($(this).val());
 		});
-
-
-		/* MAPS */
-		var map;
-		loadMapScript();
-
-		function loadMapScript(){
-			var script = document.createElement("script");
-			script.type = "text/javascript";
-			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false&callback=initialize_map";
-			document.body.appendChild(script);
-		}
-
-		function initialize_map(lat,lng){
-			it.geocoder = new google.maps.Geocoder();
-			if(lat==undefined){
-				var lat = it.currentLocation.coords.latitude;
-				var lng = it.currentLocation.coords.longitude;
-			}
-			var mapOptions = {
-				center: new google.maps.LatLng(lat,lng),
-				zoom: 14,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-			it.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-		}
-
-		function codeAddress(address){
-		    it.geocoder.geocode( { 'address': address}, function(results, status) {
-			    if (status == google.maps.GeocoderStatus.OK) {
-			    	var geo = results[0].geometry.location;
-			    	console.log(geo);
-
-			    	$('#lat').val(geo.ib);
-			    	$('#lng').val(geo.jb);
-			        it.map.setCenter(geo, 16);
-
-			        it.marker = new google.maps.Marker({
-			        	map: it.map, 
-			        	position: geo
-			        });
-
-			        it.marker.setDraggable (true);
-			        google.maps.event.addListener(it.marker, "dragend", markerMove);
-			    }
-			});
-		}
-		function markerMove(event){
-        	it.point = it.marker.getPosition();
-        	it.map.panTo(it.point);
-        	console.log(it.point);
-		}
 	</script>
 </div>
