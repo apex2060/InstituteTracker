@@ -4,7 +4,6 @@ var maps={
 	pendingMaps: 	[],
 	openMaps: 		[],
 	marker: 		[],
-	geocoder: 		new google.maps.Geocoder(),
 
 	init: function(mapCanvasId, lat, lng){
 		var mapData={};
@@ -35,6 +34,7 @@ var maps={
 	scriptLoaded: function(){
 		this.scriptLoaded=true;
 		this.scriptLoading=false;
+		this.geocoder=new google.maps.Geocoder();
 		for(var i=0; i<this.pendingMaps.length; i++){
 			this.newMap(this.pendingMaps[i]);
 		}
