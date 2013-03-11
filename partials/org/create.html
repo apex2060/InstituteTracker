@@ -161,7 +161,8 @@
 		}
 		function markerMove(event){
         	it.point = it.marker.getPosition();
-        	map.panTo(point);
+        	map.panTo(it.point);
+        	console.log(it.point);
 		}
 	</script>
 </div>
