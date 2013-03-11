@@ -3,8 +3,7 @@ var maps={
 	scriptLoading: 	false,
 	pendingMaps: 	[],
 	openMaps: 		[],
-	marker: 		[],
-	geocoder:
+	marker: 		[]
 };
 
 maps.init = function(mapCanvasId, lat, lng){
