@@ -103,10 +103,11 @@
 		});
 
 		var mapData={};
-			mapData.canvasId='';
+			mapData.canvasId='map_canvas';
 			mapData.lat 	=;
 			mapData.lng 	=;
-		//maps.newMap(mapData);
+			console.log('calling new map');
+		maps.newMap(mapData);
 
 		// Update address fields when quick pasted.
 		$('#quickpaste').blur(function(){
