@@ -48,7 +48,7 @@ maps.newMap = function(mapData){
 			zoom: 14,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
-		this.openMaps.push(new google.maps.Map(document.getElementById(mapData.canvasId), mapOptions));
+		this.openMaps[mapData.canvasId] = new google.maps.Map(document.getElementById(mapData.canvasId), mapOptions);
 	}
 }
 
