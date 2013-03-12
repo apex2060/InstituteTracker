@@ -63,7 +63,8 @@ maps.setFromAddress = function(canvasId, address, dragable){
 			console.log(geo.toString());
 
 			maps.openMaps[canvasId].setCenter(geo);
-			maps.marker[canvasId] = [];
+			if(maps.marker[canvasId]==undefined)
+				maps.marker[canvasId] = [];
 			maps.marker[canvasId].push(
 				new google.maps.Marker({
 					map: maps.openMaps[canvasId], 
