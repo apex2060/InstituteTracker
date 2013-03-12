@@ -22,8 +22,8 @@ maps.init = function(mapCanvasId, lat, lng){
 console.log('22');
 maps.getScript = function(){
 	if(!this.scriptLoaded){
-		if(!scriptLoading){
-			scriptLoading=true;
+		if(!this.scriptLoading){
+			this.scriptLoading=true;
 			var script = document.createElement("script");
 			script.type = "text/javascript";
 			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false&callback=maps.setScriptLoaded";
