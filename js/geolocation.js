@@ -5,7 +5,7 @@ var maps={
 	openMaps: 		[],
 	marker: 		[]
 };
-console.log('8');
+
 maps.init = function(mapCanvasId, lat, lng){
 	var mapData={};
 		mapData.canvasId=mapCanvasId;
@@ -19,7 +19,7 @@ maps.init = function(mapCanvasId, lat, lng){
 		this.pendingMaps.push(mapData);
 	}
 }
-console.log('22');
+
 maps.getScript = function(){
 	if(!this.scriptLoaded){
 		if(!this.scriptLoading){
@@ -31,7 +31,7 @@ maps.getScript = function(){
 		}
 	}
 }
-console.log('34');
+
 maps.setScriptLoaded = function(){
 	this.scriptLoaded	= true;
 	this.scriptLoading	= false;
@@ -40,7 +40,7 @@ maps.setScriptLoaded = function(){
 		this.newMap(this.pendingMaps[i]);
 	}
 }
-console.log('43');
+
 maps.newMap = function(mapData){
 	if(mapData.canvasId!=undefined){
 		var mapOptions = {
@@ -48,10 +48,10 @@ maps.newMap = function(mapData){
 			zoom: 14,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
-		this.openMaps[this.openMaps.length] = new google.maps.Map(document.getElementById(mapData.canvasId), mapOptions);
+		this.openMaps.push(new google.maps.Map(document.getElementById(mapData.canvasId), mapOptions));
 	}
 }
-console.log('54');
+
 maps.setFromAddress = function(map, address){
     this.geocoder.geocode( { 'address': address}, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK) {
@@ -72,7 +72,7 @@ maps.setFromAddress = function(map, address){
 	    }
 	});
 }
-console.log('75');
+
 maps.markerMove = function(event){
 	console.log(event);
 	//it.point = it.marker.getPosition();
