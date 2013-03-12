@@ -69,17 +69,15 @@ maps.setFromAddress = function(canvasId, address, dragable){
 			maps.openMaps[canvasId].setCenter(myLatLng);
 			if(maps.marker[canvasId]==undefined)
 				maps.marker[canvasId] = [];
-			maps.marker[canvasId].push(
-				new google.maps.Marker({
+			maps.marker[canvasId][] = new google.maps.Marker({
 					map: maps.openMaps[canvasId], 
 					position: geo
 				})
-			);
 
-			// maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (true);
-			// google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", function(event){
-			// 	maps.markerMove(event, canvasId, maps.marker[canvasId].length-1);
-			// });
+			maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (true);
+			google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", function(event){
+				maps.markerMove(event, canvasId, maps.marker[canvasId].length-1);
+			});
 		}
 	});
 }
