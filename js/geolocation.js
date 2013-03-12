@@ -79,7 +79,7 @@ maps.setFromAddress = function(canvasId, address, dragable){
 			google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", maps.markerMove);
 		}
 	});
-}
+} 
 
 maps.markerMove = function(event, canvasId, markerId){
 	console.log(event);
