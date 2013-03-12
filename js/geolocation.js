@@ -76,16 +76,7 @@ maps.setFromAddress = function(canvasId, address, dragable){
 			);
 
 			maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (true);
-			google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", function(event){
-				var markerId=maps.marker[canvasId].length-1;
-				console.log(event);
-				console.log(canvasId);
-				console.log(markerId);
-				var point = maps.marker[canvasId][markerId].getPosition();
-				maps.openMaps[canvasId].panTo(point);
-				console.log(point);
-				//maps.markerMove(event, canvasId, maps.marker[canvasId].length-1);
-			});
+			google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", maps.markerMove);
 		}
 	});
 }
