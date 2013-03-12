@@ -8,9 +8,9 @@ var maps={
 
 maps.init = function(mapCanvasId, lat, lng){
 	var mapData={};
-		mapData.canvasId=mapCanvasId;
-		mapData.lat=lat;
-		mapData.lng=lng;
+	mapData.canvasId=mapCanvasId;
+	mapData.lat=lat;
+	mapData.lng=lng;
 
 	if(this.scriptLoaded){
 		this.newMap(mapData);
@@ -56,26 +56,27 @@ maps.setFromAddress = function(canvasId, address, dragable){
 	if(dragable==undefined)
 		var dragable=false;
 
-    this.geocoder.geocode( { 'address': address}, function(results, status) {
-	    if (status == google.maps.GeocoderStatus.OK) {
-	    	var geo = results[0].geometry.location;
+	this.geocoder.geocode( { 'address': address}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			var geo = results[0].geometry.location;
 
-	    	mapData={};
-	    	mapData.canvasId=canvasId;
-	    	mapData.lat=geo.ib;
-	    	mapData.lng=geo.jb;
+			mapData={};
+			mapData.canvasId=canvasId;
+			mapData.lat=geo.ib;
+			mapData.lng=geo.jb;
 
-	    	maps.marker[canvasId] = [];
-	        maps.marker[canvasId].push(
-	        	new google.maps.Marker({
-		        	map: maps.openMaps[canvasId], 
-		        	position: geo
-		        })
-		    );
+			maps.openMaps[canvasId].setCenter(mapData);
+			maps.marker[canvasId] = [];
+			maps.marker[canvasId].push(
+				new google.maps.Marker({
+					map: maps.openMaps[canvasId], 
+					position: geo
+				})
+			);
 
-	        maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (true);
-	        google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", maps.markerMove);
-	    }
+			maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (true);
+			google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", maps.markerMove);
+		}
 	});
 }
 
