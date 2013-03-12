@@ -52,7 +52,7 @@ maps.newMap = function(mapData){
 	}
 }
 
-maps.setFromAddress = function(canvasId, address, dragFunction){
+maps.newFromAddress = function(canvasId, address, dragFunction){
 	if(dragFunction==undefined)
 		var dragable=false;
 	else
@@ -61,8 +61,6 @@ maps.setFromAddress = function(canvasId, address, dragFunction){
 	this.geocoder.geocode( { 'address': address}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			var geo = results[0].geometry.location;
-			console.log('geocode address 3');
-			console.log(geo.toString());
 
 			maps.openMaps[canvasId].setCenter(geo);
 			if(maps.marker[canvasId]==undefined)
@@ -82,6 +80,19 @@ maps.setFromAddress = function(canvasId, address, dragFunction){
 			});
 		}
 	});
+}
+maps.updateFromAddress = function(canvasId, markerId, address, dragFunction){
+	if(maps.marker[canvasId][markerId]==undefined){
+		this.newFromAddress(canvasId, address, dragFunction);
+	}else{
+		this.geocoder.geocode( { 'address': address}, function(results, status) {
+			if(status == google.maps.GeocoderStatus.OK) {
+				var geo = results[0].geometry.location;
+				maps.openMaps[canvasId].setCenter(geo);
+				maps.marker[canvasId][markerId].setPosition(geo);
+			}
+		});
+	}
 }
 
 maps.markerMove = function(event, canvasId, markerId){
@@ -119,3 +130,5 @@ function checkType(str){
 		return 'other';
 	}
 }
+
+//YT: Introduction to Nodejs with Ryan Dahi
