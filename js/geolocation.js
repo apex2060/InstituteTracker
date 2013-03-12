@@ -65,18 +65,16 @@ maps.setFromAddress = function(canvasId, address, dragable){
 	    	mapData.lat=geo.ib;
 	    	mapData.lng=geo.jb;
 
-			console.log(this);
-	    	console.log(this.openMaps);
-	    	this.marker[canvasId+'m'] = [];
-	        this.marker[canvasId+'m'].push(
+	    	maps.marker[canvasId] = [];
+	        maps.marker[canvasId].push(
 	        	new google.maps.Marker({
-		        	map: this.openMaps[canvasId], 
+		        	map: maps.openMaps[canvasId], 
 		        	position: geo
 		        })
 		    );
 
-	        this.marker[canvasId+'m'][this.marker[canvasId+'m'].length].setDraggable (true);
-	        google.maps.event.addListener(this.marker[canvasId+'m'][this.marker[canvasId+'m'].length], "dragend", maps.markerMove);
+	        maps.marker[canvasId][maps.marker[canvasId].length].setDraggable (true);
+	        google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length], "dragend", maps.markerMove);
 	    }
 	});
 }
