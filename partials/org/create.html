@@ -112,7 +112,7 @@
 			$('#phone').val(contact['phone']);
 			$('#email').val(contact['email']);
 			
-			maps.setFromAddress(maps.openMaps[0], contact['address_street']+' '+contact['address_zip']);
+			maps.setFromAddress('map_canvas', contact['address_street']+' '+contact['address_zip'], true);
 			//codeAddress(contact['address_street']+' '+contact['address_zip']);
 		});
 		//update map when address is updated.
