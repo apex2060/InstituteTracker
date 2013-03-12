@@ -102,12 +102,8 @@
 			}
 		});
 
-		var mapData={};
-			mapData.canvasId='map_canvas';
-			mapData.lat 	=;
-			mapData.lng 	=;
-			console.log('calling new map');
-		maps.newMap(mapData);
+		console.log('calling new map');
+		maps.init('map_canvas', it.currentLocation.coords.latitude, it.currentLocation.coords.longitude);
 
 		// Update address fields when quick pasted.
 		$('#quickpaste').blur(function(){
