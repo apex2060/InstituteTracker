@@ -82,7 +82,7 @@ maps.newFromAddress = function(canvasId, address, dragFunction){
 	});
 }
 maps.updateFromAddress = function(canvasId, markerId, address, dragFunction){
-	if(maps.marker[canvasId][markerId]==undefined){
+	if(maps.marker[canvasId]==undefined && maps.marker[canvasId][markerId]==undefined){
 		this.newFromAddress(canvasId, address, dragFunction);
 	}else{
 		this.geocoder.geocode( { 'address': address}, function(results, status) {
