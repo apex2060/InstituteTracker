@@ -83,8 +83,10 @@ maps.newFromAddress = function(canvasId, address, dragFunction){
 }
 maps.updateFromAddress = function(canvasId, markerId, address, dragFunction){
 	if(maps.marker[canvasId]==undefined && maps.marker[canvasId][markerId]==undefined){
+		console.log('make new');
 		this.newFromAddress(canvasId, address, dragFunction);
 	}else{
+		console.log('update old');
 		this.geocoder.geocode( { 'address': address}, function(results, status) {
 			if(status == google.maps.GeocoderStatus.OK) {
 				var geo = results[0].geometry.location;
