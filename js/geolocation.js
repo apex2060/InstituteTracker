@@ -12,11 +12,11 @@ maps.init = function(mapCanvasId, lat, lng){
 		mapData.lat=lat;
 		mapData.lng=lng;
 
-	if(!this.scriptLoaded){
+	if(this.scriptLoaded){
+		this.newMap(mapData);
+	}else{
 		this.getScript();
 		this.pendingMaps.push(mapData);
-	}else{
-		this.newMap(mapData);
 	}
 }
 console.log('22');
@@ -26,13 +26,13 @@ maps.getScript = function(){
 			scriptLoading=true;
 			var script = document.createElement("script");
 			script.type = "text/javascript";
-			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false&callback=maps.scriptLoaded";
+			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false&callback=maps.setScriptLoaded";
 			document.body.appendChild(script);
 		}
 	}
 }
 console.log('34');
-maps.scriptLoaded = function(){
+maps.setScriptLoaded = function(){
 	this.scriptLoaded	= true;
 	this.scriptLoading	= false;
 	this.geocoder 		= new google.maps.Geocoder();
