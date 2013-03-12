@@ -73,8 +73,8 @@ maps.setFromAddress = function(canvasId, address, dragable){
 		        })
 		    );
 
-	        maps.marker[canvasId][maps.marker[canvasId].length].setDraggable (true);
-	        google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length], "dragend", maps.markerMove);
+	        maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (true);
+	        google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", maps.markerMove);
 	    }
 	});
 }
