@@ -52,9 +52,11 @@ maps.newMap = function(mapData){
 	}
 }
 
-maps.setFromAddress = function(canvasId, address, dragable){
-	if(dragable==undefined)
+maps.setFromAddress = function(canvasId, address, dragFunction){
+	if(dragFunction==undefined)
 		var dragable=false;
+	else
+		var dragable=true;
 
 	this.geocoder.geocode( { 'address': address}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
@@ -72,9 +74,11 @@ maps.setFromAddress = function(canvasId, address, dragable){
 				})
 			);
 
-			maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (true);
+			maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (dragable);
 			google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", function(event){
 				maps.markerMove(event, canvasId, maps.marker[canvasId].length-1);
+				if(dragFunction!=undefined)
+					dragFunction(event, canvasId, maps.marker[canvasId].length-1);
 			});
 		}
 	});
@@ -85,7 +89,7 @@ maps.markerMove = function(event, canvasId, markerId){
 	console.log(canvasId);
 	console.log(markerId);
 	var point = maps.marker[canvasId][markerId].getPosition();
-	maps.openMaps[canvasId].panTo(point);
+	//maps.openMaps[canvasId].panTo(point);
 	console.log(point);
 }
 

@@ -112,12 +112,17 @@
 			$('#phone').val(contact['phone']);
 			$('#email').val(contact['email']);
 			
-			maps.setFromAddress('map_canvas', contact['address_street']+' '+contact['address_zip'], true);
-			//codeAddress(contact['address_street']+' '+contact['address_zip']);
+			maps.setFromAddress('map_canvas', contact['address_street']+' '+contact['address_zip'], function(event, canvasId, markerId){
+				$('#lat').val(maps.marker[canvasId][markerId].getPosition().mb);
+				$('#lat').val(maps.marker[canvasId][markerId].getPosition().nb);
+				alert(maps.marker[canvasId][markerId].getPosition().toString());
+			});
 		});
 		//update map when address is updated.
 		$('#address').blur(function(){
-			//codeAddress($(this).val());
+			maps.setFromAddress('map_canvas', $(this).val(), function(event, canvasId, markerId){
+				alert(maps.marker[canvasId][markerId].getPosition().toString());
+			});
 		});
 	</script>
 </div>
