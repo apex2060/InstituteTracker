@@ -59,7 +59,7 @@ maps.setFromAddress = function(canvasId, address, dragable){
 	this.geocoder.geocode( { 'address': address}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			var geo = results[0].geometry.location;
-			console.log('geocode address');
+			console.log('geocode address 2');
 			console.log(geo.toString());
 
 			mapData={};
