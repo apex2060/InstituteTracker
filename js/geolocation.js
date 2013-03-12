@@ -74,10 +74,10 @@ maps.setFromAddress = function(canvasId, address, dragable){
 					position: geo
 				})
 
-			maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (true);
-			google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", function(event){
-				maps.markerMove(event, canvasId, maps.marker[canvasId].length-1);
-			});
+			// maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (true);
+			// google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", function(event){
+			// 	maps.markerMove(event, canvasId, maps.marker[canvasId].length-1);
+			// });
 		}
 	});
 }
