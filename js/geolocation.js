@@ -60,7 +60,7 @@ maps.setFromAddress = function(canvasId, address, dragable){
 		if (status == google.maps.GeocoderStatus.OK) {
 			var geo = results[0].geometry.location;
 			console.log('geocode address');
-			console.log(geo);
+			console.log(geo.toString());
 
 			mapData={};
 			mapData.canvasId=canvasId;
