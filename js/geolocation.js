@@ -66,6 +66,7 @@ maps.setFromAddress = function(canvasId, address, dragable){
 			mapData.canvasId=canvasId;
 			mapData.lat=geo.lat;
 			mapData.lng=geo.lng;
+			console.log(mapData);
 
 			var myLatLng = new google.maps.LatLng(mapData.lat, mapData.lng);
 			maps.openMaps[canvasId].setCenter(myLatLng);
