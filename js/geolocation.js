@@ -4,40 +4,40 @@ var maps={
 	pendingMaps: 	[],
 	openMaps: 		[],
 	marker: 		[]
-};
+}
 
 maps.init = function(mapCanvasId, lat, lng){
-	var mapData={};
-	mapData.canvasId=mapCanvasId;
-	mapData.lat=lat;
-	mapData.lng=lng;
+	var mapData={}
+		mapData.canvasId=mapCanvasId
+		mapData.lat=lat
+		mapData.lng=lng
 
-	if(this.scriptLoaded){
-		this.newMap(mapData);
+	if(!this.scriptLoaded){
+		this.getScript()
+		this.pendingMaps.push(mapData)
 	}else{
-		this.getScript();
-		this.pendingMaps.push(mapData);
+		this.newMap(mapData)
 	}
 }
 
 maps.getScript = function(){
 	if(!this.scriptLoaded){
-		if(!this.scriptLoading){
-			this.scriptLoading=true;
-			var script = document.createElement("script");
-			script.type = "text/javascript";
-			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false&callback=maps.setScriptLoaded";
-			document.body.appendChild(script);
+		if(!scriptLoading){
+			scriptLoading=true
+			var script = document.createElement("script")
+			script.type = "text/javascript"
+			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false&callback=maps.scriptLoaded"
+			document.body.appendChild(script)
 		}
 	}
 }
 
-maps.setScriptLoaded = function(){
-	this.scriptLoaded	= true;
-	this.scriptLoading	= false;
-	this.geocoder 		= new google.maps.Geocoder();
-	for(var i=0; i<this.pendingMaps.length; i++){
-		this.newMap(this.pendingMaps[i]);
+maps.scriptLoaded = function(){
+	this.scriptLoaded	= true
+	this.scriptLoading	= false
+	this.geocoder 		= new google.maps.Geocoder()
+	for(var i=0 i<this.pendingMaps.length i++){
+		this.newMap(this.pendingMaps[i])
 	}
 }
 
@@ -47,47 +47,37 @@ maps.newMap = function(mapData){
 			center: new google.maps.LatLng(mapData.lat,mapData.lng),
 			zoom: 14,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-		this.openMaps[mapData.canvasId] = new google.maps.Map(document.getElementById(mapData.canvasId), mapOptions);
+		}
+		this.openMaps[this.openMaps.length] = new google.maps.Map(document.getElementById(mapData.canvasId), mapOptions)
 	}
 }
 
-maps.setFromAddress = function(canvasId, address, dragable){
-	if(dragable==undefined)
-		var dragable=false;
+maps.setFromAddress = function(map, address){
+    this.geocoder.geocode( { 'address': address}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+	    	var geo = results[0].geometry.location
 
-	this.geocoder.geocode( { 'address': address}, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-			var geo = results[0].geometry.location;
+	    	mapData.lat=geo.ib
+	    	mapData.lng=geo.jb
 
-			mapData={};
-			mapData.canvasId=canvasId;
-			mapData.lat=geo.lat;
-			mapData.lng=geo.lng;
+	        map.setCenter(geo, 16)
 
-			var myLatLng = new google.maps.LatLng(mapData.lat, mapData.lng);
-			maps.openMaps[canvasId].setCenter(myLatLng);
-			maps.marker[canvasId] = [];
-			maps.marker[canvasId].push(
-				new google.maps.Marker({
-					map: maps.openMaps[canvasId], 
-					position: geo
-				})
-			);
+	        this.marker[this.marker.length] = new google.maps.Marker({
+	        	map: map, 
+	        	position: geo
+	        })
 
-			maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (true);
-			google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", maps.markerMove);
-		}
-	});
-} 
+	        this.marker[this.marker.length].setDraggable (true)
+	        google.maps.event.addListener(this.marker[this.marker.length], "dragend", maps.markerMove)
+	    }
+	})
+}
 
-maps.markerMove = function(event, canvasId, markerId){
-	console.log(event);
-	console.log(canvasId);
-	console.log(markerId);
-	var point = maps.marker[canvasId][markerId].getPosition();
-	maps.openMaps[canvasId].panTo(point);
-	console.log(point);
+maps.markerMove = function(event){
+	console.log(event)
+	//it.point = it.marker.getPosition()
+	//it.map.panTo(it.point)
+	//console.log(it.point)
 }
 
 function parseContact(str){
