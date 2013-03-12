@@ -65,7 +65,8 @@ maps.setFromAddress = function(canvasId, address, dragable){
 			mapData.lat=geo.ib;
 			mapData.lng=geo.jb;
 
-			maps.openMaps[canvasId].setCenter(mapData);
+			var myLatLng = new google.maps.LatLng(mapData.lat, mapData.lng);
+			maps.openMaps[canvasId].setCenter(myLatLng);
 			maps.marker[canvasId] = [];
 			maps.marker[canvasId].push(
 				new google.maps.Marker({
