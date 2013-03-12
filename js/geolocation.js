@@ -52,23 +52,29 @@ maps.newMap = function(mapData){
 	}
 }
 
-maps.setFromAddress = function(map, address){
+maps.setFromAddress = function(canvasId, address, dragable){
+	if(dragable==undefined)
+		var dragable=false;
+
     this.geocoder.geocode( { 'address': address}, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK) {
 	    	var geo = results[0].geometry.location;
 
+	    	mapData={};
+	    	mapData.canvasId=canvasId;
 	    	mapData.lat=geo.ib;
 	    	mapData.lng=geo.jb;
 
-	        map.setCenter(geo, 16);
+	    	this.marker[canvasId] = [];
+	        this.marker[canvasId].push(
+	        	new google.maps.Marker({
+		        	map: this.openMaps[canvasId], 
+		        	position: geo
+		        })
+		    );
 
-	        this.marker[this.marker.length] = new google.maps.Marker({
-	        	map: map, 
-	        	position: geo
-	        });
-
-	        this.marker[this.marker.length].setDraggable (true);
-	        google.maps.event.addListener(this.marker[this.marker.length], "dragend", maps.markerMove);
+	        this.marker[canvasId][this.marker[canvasId].length].setDraggable (true);
+	        google.maps.event.addListener(this.marker[canvasId][this.marker[canvasId].length], "dragend", maps.markerMove);
 	    }
 	});
 }
