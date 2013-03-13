@@ -85,7 +85,7 @@ maps.updateFromAddress = function(canvasId, markerId, address, dragFunction){
 	console.log('updatefromaddress 85');
 	console.log(canvasId);
 	console.log(maps.marker[canvasId]);
-	if(maps.marker[canvasId]==undefined && maps.marker[canvasId][markerId]==undefined){
+	if(maps.marker[canvasId]==undefined || maps.marker[canvasId][markerId]==undefined){
 		console.log('make new');
 		this.newFromAddress(canvasId, address, dragFunction);
 	}else{
