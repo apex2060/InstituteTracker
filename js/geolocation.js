@@ -51,7 +51,26 @@ maps.newMap = function(mapData){
 		this.openMaps[mapData.canvasId] = new google.maps.Map(document.getElementById(mapData.canvasId), mapOptions);
 	}
 }
+maps.newMarker = function(canvasId, lat, lng, onMarkerUpdate){
+	if(onMarkerUpdate==undefined)
+		var dragable=false;
+	else
+		var dragable=true;
 
+	maps.marker[canvasId].push(
+		new google.maps.Marker({
+			map: maps.openMaps[canvasId], 
+			position: new google.maps.LatLng(lat,lng)
+		})
+	);
+
+	maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (dragable);
+	google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", function(event){
+		maps.markerMove(event, canvasId, maps.marker[canvasId].length-1);
+		if(onMarkerUpdate!=undefined)
+			onMarkerUpdate(event, canvasId, maps.marker[canvasId].length-1);
+	});
+}
 maps.newFromAddress = function(canvasId, address, onMarkerUpdate){
 	if(onMarkerUpdate==undefined)
 		var dragable=false;

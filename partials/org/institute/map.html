@@ -12,12 +12,18 @@
 		allOrgs.fetch({
 			success: function(orgs) {
 				console.log(orgs);
-				// var list = jQuery.map(areas.toJSON(), function (a) {
+				var list = orgs.models;
+				// var list = jQuery.map(orgs.models.toJSON(), function (a) {
 				// 	var t={};
-				// 	t.id=a.area_id;
 				// 	t.name=a.name;
 				// 	return t;
 				// });
+				console.log(list);
+				for(var i=0; i<list.length; i++){
+					maps.newMarker('map_canvas', list[i].attributes.geo.lat, list[i].attributes.geo.lat, function(event, canvasId, markerId){
+						alert(list[i].attributes.name);
+					})
+				}
 				// put points on map.
 			}
 		});
