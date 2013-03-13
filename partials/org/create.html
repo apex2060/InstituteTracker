@@ -113,14 +113,15 @@
 			
 			maps.updateFromAddress('map_canvas', 0, contact['address_street']+' '+contact['address_zip'], function(event, canvasId, markerId){
 				$('#lat').val(maps.marker[canvasId][markerId].getPosition().mb);
-				$('#lat').val(maps.marker[canvasId][markerId].getPosition().nb);
-				alert(maps.marker[canvasId][markerId].getPosition().toString());
+				$('#lng').val(maps.marker[canvasId][markerId].getPosition().nb);
+				// alert(maps.marker[canvasId][markerId].getPosition().toString());
 			});
 		});
 		//update map when address is updated.
 		$('#address').blur(function(){
 			maps.updateFromAddress('map_canvas', 0, $(this).val(), function(event, canvasId, markerId){
-				alert(maps.marker[canvasId][markerId].getPosition().toString());
+				$('#lat').val(maps.marker[canvasId][markerId].getPosition().mb);
+				$('#lng').val(maps.marker[canvasId][markerId].getPosition().nb);
 			});
 		});
 	</script>
