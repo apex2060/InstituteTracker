@@ -52,8 +52,8 @@ maps.newMap = function(mapData){
 	}
 }
 
-maps.newFromAddress = function(canvasId, address, dragFunction){
-	if(dragFunction==undefined)
+maps.newFromAddress = function(canvasId, address, onMarkerUpdate){
+	if(onMarkerUpdate==undefined)
 		var dragable=false;
 	else
 		var dragable=true;
@@ -75,22 +75,28 @@ maps.newFromAddress = function(canvasId, address, dragFunction){
 			maps.marker[canvasId][maps.marker[canvasId].length-1].setDraggable (dragable);
 			google.maps.event.addListener(maps.marker[canvasId][maps.marker[canvasId].length-1], "dragend", function(event){
 				maps.markerMove(event, canvasId, maps.marker[canvasId].length-1);
-				if(dragFunction!=undefined)
-					dragFunction(event, canvasId, maps.marker[canvasId].length-1);
+				if(onMarkerUpdate!=undefined)
+					onMarkerUpdate(event, canvasId, maps.marker[canvasId].length-1);
 			});
+			if(onMarkerUpdate!=undefined)
+				onMarkerUpdate(event, canvasId, maps.marker[canvasId].length-1);
 		}
 	});
 }
-maps.updateFromAddress = function(canvasId, markerId, address, dragFunction){
+
+// calling this function will only update the map marker - unless the specific marker does not yet exist.
+// if it does not yet exist - a new marker will be made.
+maps.updateFromAddress = function(canvasId, markerId, address, onMarkerUpdate){
 	if(maps.marker[canvasId]==undefined || maps.marker[canvasId][markerId]==undefined){
-		console.log('make new');
-		this.newFromAddress(canvasId, address, dragFunction);
+		this.newFromAddress(canvasId, address, onMarkerUpdate);
 	}else{
 		this.geocoder.geocode( { 'address': address}, function(results, status) {
 			if(status == google.maps.GeocoderStatus.OK) {
 				var geo = results[0].geometry.location;
 				maps.openMaps[canvasId].setCenter(geo);
 				maps.marker[canvasId][markerId].setPosition(geo);
+				if(onMarkerUpdate!=undefined)
+					onMarkerUpdate(event, canvasId, markerId);
 			}
 		});
 	}
