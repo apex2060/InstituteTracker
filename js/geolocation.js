@@ -7,27 +7,6 @@ var maps={
 	waiting: 		[]
 };
 
-maps.iinit = function(callback){
-	if(window['google']==undefined){
-		if(this.scriptLoading==false){
-			this.scriptLoading=true;
-			var script = document.createElement("script");
-			script.type = "text/javascript";
-			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false&callback=maps.loaded";
-			document.body.appendChild(script);
-		}else{
-			this.waiting.push(callback);
-		}
-	}else{
-		callback();
-	}
-}
-maps.loaded = function(){
-	for(var i=0; i<this.waiting.length; i++){
-		this.waiting[i]();
-	}
-}
-
 maps.init = function(mapCanvasId, lat, lng){
 	var mapData={};
 	mapData.canvasId=mapCanvasId;
