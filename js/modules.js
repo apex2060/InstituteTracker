@@ -9,6 +9,8 @@ angular.module('institute', []).
 		otherwise({redirectTo: '/home'});
 }]);
 
+	
+
 /*		when('/list:sni', {templateUrl: 'partials/list.html',   controller: listCtrl}).
 		when('/map:sni', {templateUrl: 'partials/map.html',   controller: mapCtrl}).
 		when('/report:sni', {templateUrl: 'partials/report.html',   controller: reportCtrl}).
