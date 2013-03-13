@@ -5,6 +5,7 @@ angular.module('institute', []).
 		when('/account/create', {templateUrl: 'partials/account/create.html'}).
 		when('/account/welcome', {templateUrl: 'partials/account/welcome.html'}).
 		when('/org/create', {templateUrl: 'partials/org/create.html'}).
+		when('/institute/map', {templateUrl: 'partials/org/institute/map.html'}).
 		otherwise({redirectTo: '/home'});
 }]);
 

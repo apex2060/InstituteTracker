@@ -1,0 +1,27 @@
+<div id="signup" ng-app> 
+	<h3>Map Of Institutes</h3>
+	<hr>
+	<div class="map"><div id="map_canvas"></div></div>
+
+	<script language="javascript" src="js/geolocation.js"></script>
+	<script>
+
+		var org = StackMob.Model.extend({ schemaName: 'organization' });
+		var orgs = StackMob.Collection.extend({ model: org });
+		var allOrgs = new orgs();
+		allOrgs.fetch({
+			success: function(orgs) {
+				console.log(orgs);
+				// var list = jQuery.map(areas.toJSON(), function (a) {
+				// 	var t={};
+				// 	t.id=a.area_id;
+				// 	t.name=a.name;
+				// 	return t;
+				// });
+				// put points on map.
+			}
+		});
+
+		maps.init('map_canvas', 0, 0);
+	</script>
+</div>
