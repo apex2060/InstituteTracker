@@ -8,7 +8,7 @@ var maps={
 };
 
 maps.iinit = function(callback){
-	if(typeof(google)==undefined){
+	if(window['google']==undefined){
 		if(this.scriptLoading==false){
 			this.scriptLoading=true;
 			var script = document.createElement("script");
@@ -44,7 +44,7 @@ maps.init = function(mapCanvasId, lat, lng){
 
 maps.getScript = function(){
 	if(!this.scriptLoaded){
-		if(typeof(google)==undefined){
+		if(window['google']==undefined){
 			if(!this.scriptLoading){
 				this.scriptLoading=true;
 				var script = document.createElement("script");
