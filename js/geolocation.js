@@ -21,7 +21,7 @@ maps.init = function(mapCanvasId, lat, lng){
 }
 
 maps.getScript = function(){
-	if(!this.scriptLoaded){
+	if(google==undefined){
 		if(!this.scriptLoading){
 			this.scriptLoading=true;
 			var script = document.createElement("script");
