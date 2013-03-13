@@ -20,15 +20,14 @@
 				// });
 				it.list = list;
 				for(var i=0; i<list.length; i++){
-					// maps.newMarker('map_canvas', list[i].attributes.geo.lat, list[i].attributes.geo.lon, function(event, canvasId, markerId){
-					// 	alert(list[i].attributes.name);
-					// })
-					var marker = new google.maps.Marker({map: maps.openMaps['map_canvas'], position: point, clickable: true});
-					marker.info = new google.maps.InfoWindow({
+					maps.newMarker('map_canvas', list[i].attributes.geo.lat, list[i].attributes.geo.lon, function(event, canvasId, markerId){
+						alert(markerId);
+					})
+					maps.marker['map_canvas'][i].info = new google.maps.InfoWindow({
 						content: '<b>Speed:</b>  knots'
 					});
-					google.maps.event.addListener(marker, 'click', function() {
-						marker.info.open(maps.openMaps['map_canvas'], marker);
+					google.maps.event.addListener(maps.marker['map_canvas'][i], 'click', function() {
+						maps.marker['map_canvas'][i].info.open(maps.openMaps['map_canvas'], maps.marker['map_canvas'][i]);
 					});
 				}
 				maps.openMaps['map_canvas'].setZoom(6);
