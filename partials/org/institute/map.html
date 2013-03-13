@@ -13,25 +13,65 @@
 			success: function(orgs) {
 				console.log(orgs);
 				var list = orgs.models;
+
+				maps.iinit(function(){
+					var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+					var mapOptions = {
+						zoom: 4,
+						center: myLatlng,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					}
+
+					map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+					// Add 5 markers to the map at random locations.
+					var southWest = new google.maps.LatLng(-31.203405,125.244141);
+					var northEast = new google.maps.LatLng(-25.363882,131.044922);
+					var bounds = new google.maps.LatLngBounds(southWest,northEast);
+					map.fitBounds(bounds);
+					var lngSpan = northEast.lng() - southWest.lng();
+					var latSpan = northEast.lat() - southWest.lat();
+					for (var i = 0; i < 5; i++) {
+						var location = new google.maps.LatLng(southWest.lat() + latSpan * Math.random(),
+						southWest.lng() + lngSpan * Math.random());
+						var marker = new google.maps.Marker({
+							position: location,
+							map: map
+						});
+						var j = i + 1;
+						marker.setTitle(j.toString());
+						attachSecretMessage(marker, i);
+					}
+				});
 				// var list = jQuery.map(orgs.models.toJSON(), function (a) {
 				// 	var t={};
 				// 	t.name=a.name;
 				// 	return t;
 				// });
-				it.list = list;
-				for(var i=0; i<list.length; i++){
-					maps.newMarker('map_canvas', list[i].attributes.geo.lat, list[i].attributes.geo.lon, function(event, canvasId, markerId){
-						maps.marker[canvasId][markerId].info.open(maps.openMaps[canvasId], maps.marker[canvasId][markerId]);
-					})
-					console.log(list[i].attributes);
-					maps.marker['map_canvas'][i].info = new google.maps.InfoWindow({
-						content: '<b>Speed:</b>  knots'
-					});
-				}
-				maps.openMaps['map_canvas'].setZoom(6);
+				// it.list = list;
+				// for(var i=0; i<list.length; i++){
+				// 	maps.newMarker('map_canvas', list[i].attributes.geo.lat, list[i].attributes.geo.lon, function(event, canvasId, markerId){
+				// 		maps.marker[canvasId][markerId].info.open(maps.openMaps[canvasId], maps.marker[canvasId][markerId]);
+				// 	})
+				// 	console.log(list[i].attributes);
+				// 	maps.marker['map_canvas'][i].info = new google.maps.InfoWindow({
+				// 		content: '<b>Speed:</b>  knots'
+				// 	});
+				// }
+				// maps.openMaps['map_canvas'].setZoom(6);
 			}
 		});
 
-		maps.init('map_canvas', 0, 0); 
+		function attachSecretMessage(marker, number) {
+		var message = ["This","is","the","secret","message"];
+		var infowindow = new google.maps.InfoWindow(
+		{ content: message[number],
+		size: new google.maps.Size(50,50)
+		});
+		google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map,marker);
+		});
+		}
+		//maps.init('map_canvas', 0, 0); 
 	</script>
 </div>
