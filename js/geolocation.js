@@ -82,14 +82,10 @@ maps.newFromAddress = function(canvasId, address, dragFunction){
 	});
 }
 maps.updateFromAddress = function(canvasId, markerId, address, dragFunction){
-	console.log('updatefromaddress 85');
-	console.log(canvasId);
-	console.log(maps.marker[canvasId]);
 	if(maps.marker[canvasId]==undefined || maps.marker[canvasId][markerId]==undefined){
 		console.log('make new');
 		this.newFromAddress(canvasId, address, dragFunction);
 	}else{
-		console.log('update old');
 		this.geocoder.geocode( { 'address': address}, function(results, status) {
 			if(status == google.maps.GeocoderStatus.OK) {
 				var geo = results[0].geometry.location;
