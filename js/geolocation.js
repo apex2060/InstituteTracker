@@ -57,10 +57,14 @@ maps.newMarker = function(canvasId, lat, lng, onMarkerUpdate){
 	else
 		var dragable=true;
 
+	var geo = new google.maps.LatLng(lat,lng);
+	maps.openMaps[canvasId].setCenter(geo);
+	if(maps.marker[canvasId]==undefined)
+		maps.marker[canvasId] = [];
 	maps.marker[canvasId].push(
 		new google.maps.Marker({
 			map: maps.openMaps[canvasId], 
-			position: new google.maps.LatLng(lat,lng)
+			position: geo
 		})
 	);
 
