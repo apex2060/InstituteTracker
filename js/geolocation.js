@@ -21,13 +21,17 @@ maps.init = function(mapCanvasId, lat, lng){
 }
 
 maps.getScript = function(){
-	if(google==undefined){
-		if(!this.scriptLoading){
-			this.scriptLoading=true;
-			var script = document.createElement("script");
-			script.type = "text/javascript";
-			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false&callback=maps.setScriptLoaded";
-			document.body.appendChild(script);
+	if(!this.scriptLoaded){
+		if(google==undefined){
+			if(!this.scriptLoading){
+				this.scriptLoading=true;
+				var script = document.createElement("script");
+				script.type = "text/javascript";
+				script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAw0i5KC7opeWmEF4jE6oYWu0UxjTOINj4&sensor=false&callback=maps.setScriptLoaded";
+				document.body.appendChild(script);
+			}
+		}else{
+			maps.setScriptLoaded();
 		}
 	}
 }
