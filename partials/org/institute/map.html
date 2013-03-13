@@ -18,7 +18,7 @@
 				// 	t.name=a.name;
 				// 	return t;
 				// });
-				console.log(list);
+				it.list = list;
 				for(var i=0; i<list.length; i++){
 					maps.newMarker('map_canvas', list[i].attributes.geo.lat, list[i].attributes.geo.lat, function(event, canvasId, markerId){
 						alert(list[i].attributes.name);

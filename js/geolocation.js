@@ -57,6 +57,7 @@ maps.newMarker = function(canvasId, lat, lng, onMarkerUpdate){
 	else
 		var dragable=true;
 
+	console.log(lat+' -> '+lng);
 	var geo = new google.maps.LatLng(lat,lng);
 	maps.openMaps[canvasId].setCenter(geo);
 	if(maps.marker[canvasId]==undefined)
