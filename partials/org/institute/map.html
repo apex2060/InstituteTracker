@@ -20,11 +20,18 @@
 				// });
 				it.list = list;
 				for(var i=0; i<list.length; i++){
-					maps.newMarker('map_canvas', list[i].attributes.geo.lat, list[i].attributes.geo.lon, function(event, canvasId, markerId){
-						alert(list[i].attributes.name);
-					})
+					// maps.newMarker('map_canvas', list[i].attributes.geo.lat, list[i].attributes.geo.lon, function(event, canvasId, markerId){
+					// 	alert(list[i].attributes.name);
+					// })
+					var marker = new google.maps.Marker({map: maps.openMaps['map_canvas'], position: point, clickable: true});
+					marker.info = new google.maps.InfoWindow({
+						content: '<b>Speed:</b>  knots'
+					});
+					google.maps.event.addListener(marker, 'click', function() {
+						marker.info.open(maps.openMaps['map_canvas'], marker);
+					});
 				}
-				// put points on map.
+				maps.openMaps['map_canvas'].setZoom(6);
 			}
 		});
 
