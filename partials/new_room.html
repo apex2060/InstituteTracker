@@ -1,0 +1,30 @@
+<div id="signup">
+	<form id="formCreate" class="form-horizontal" data-schema="classroom" data-hash="/" ng-submit="submit()" ng-controller="formCtrl">
+		<h3>New Classroom</h3>
+		<hr>
+		<div class="control-group">
+			<label class="control-label" for="building">building</label>
+			<div class="controls">
+				<input type="text" id="building" name="building" placeholder="building" required>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="room_number">Room Number</label>
+			<div class="controls">
+				<input type="text" id="room_number" name="room_number" placeholder="Room Number" required>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="capacity">capacity</label>
+			<div class="controls">
+				<input type="number" id="capacity" name="capacity" placeholder="capacity" required>
+			</div>
+		</div>
+
+		<button type="button" class="btn">Cancel</button>
+		<button type="submit" class="btn btn-primary">Signup</button>
+	</form>
+	<script>
+		$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+	</script>
+</div>
