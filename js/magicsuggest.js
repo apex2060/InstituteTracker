@@ -1,5 +1,5 @@
 /**
- * All auto suggestion boxes are fucked up or badly written.
+ * All auto suggestion boxes are up or badly written.
  * This is an attempt to create something that doesn't suck...
  *
  * Requires: jQuery and the Class class for OOP.
