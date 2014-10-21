@@ -3,7 +3,7 @@
  * This is an attempt to create something that doesn't suck...
  *
  * Requires: jQuery and the Class class for OOP.
- *
+ * fix
  * Author: Nicolas Bize
  * Date: Feb. 8th 2013
  * Version: 1.0
